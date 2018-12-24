@@ -22,6 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import org.jasypt.util.text.BasicTextEncryptor;
+
 public class ProductDAO
 {
 	private Connection myConn;
@@ -33,9 +35,16 @@ public class ProductDAO
 		Properties props = new Properties();
 		props.load(new FileInputStream("info/config.properties"));
 		
-		String dbUrl = props.getProperty("dbUrl");
-		String user = props.getProperty("user");
-		String password = props.getProperty("password");
+		String dbUrlEncrypted = props.getProperty("dbUrl");
+		String userEncrypted = props.getProperty("user");
+		String passwordEncrypted = props.getProperty("password");
+		
+		BasicTextEncryptor cryptor = new BasicTextEncryptor();
+		cryptor.setPassword("1");
+		
+		String dbUrl = cryptor.decrypt(dbUrlEncrypted);
+		String user = cryptor.decrypt(userEncrypted);
+		String password = cryptor.decrypt(passwordEncrypted);
 		
 		//create connection
 		myConn = DriverManager.getConnection(dbUrl, user, password);
