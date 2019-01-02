@@ -258,7 +258,7 @@ public class RecordFrame extends JFrame implements ActionListener
 			{
 				id = debitTransList.get(row).getID();
 			}
-			System.out.println(id);
+			
 			try
 			{
 				dao.deleteRecord(id);

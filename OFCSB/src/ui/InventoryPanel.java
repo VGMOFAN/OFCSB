@@ -414,6 +414,13 @@ public class InventoryPanel implements ActionListener
 					return;
 				}
 				
+				boolean right = (new PasswordDialog()).getIsRight();
+				
+				if(!right)
+				{
+					return;
+				}
+				
 				if(card.compareTo("Supply") == 0)
 				{
 					List<Supply> temp = dao.getAllSupplies();
