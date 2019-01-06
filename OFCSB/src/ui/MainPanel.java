@@ -91,6 +91,13 @@ public class MainPanel implements ActionListener
 		
 		if(e.getSource() == cashBtn)
 		{
+			if(e.getSource() == cashBtn)
+			{
+				//remove all the content on the main frame and load the cash system
+				MainFrame.overallFrame.getContentPane().removeAll();
+				MainFrame.overallFrame.repaint();
+				new Interface();
+			}
 			//remove all the content on the main frame and load the cash system
 		}
 	}
