@@ -156,7 +156,7 @@ contentsPanel.add(comboBox);
 		}
 		
 		try {
-			r = new Record( p.getAllSupplies().get(item).getID(),"Edit Price" ,stringDate,p.getAllMenus().get(item), changedPrice,);
+			r = new Record( p.getAllMenus().get(item).getID(),"Edit Price",stringDate,p.getAllMenus().get(item).getName(), changedPrice,p.getAllMenus().get(item).getPrice());
 			p.addRecord(r);
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block

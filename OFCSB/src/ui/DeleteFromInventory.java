@@ -172,7 +172,6 @@ public class DeleteFromInventory extends JFrame implements ActionListener
 		e2.printStackTrace();
 	}
 				try {
-					p.
 					r = new Record( p.getAllSupplies().get(item).getID(),"Delete inventory" ,stringDate,p.getAllSupplies().get(item).getName(), reason,numberOfItems);
 					p.addRecord(r);
 				} catch (Exception e1) {
