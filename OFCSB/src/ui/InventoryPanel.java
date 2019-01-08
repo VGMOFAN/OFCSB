@@ -245,29 +245,35 @@ public class InventoryPanel implements ActionListener
 		
 		if(e.getSource() == addInventoryBtn)
 		{
+			int row = -1;
+			if(card.compareTo("Supply") == 0)
+			{
+				row = supplyTable.getSelectedRow();
+			}
+			else if(card.compareTo("Other") == 0)
+			{
+				row = otherTable.getSelectedRow();
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(MainFrame.overallFrame, "You must select a product from Supply or Other", "Error", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+			
+			if(row < 0)
+			{
+				JOptionPane.showMessageDialog(MainFrame.overallFrame, "You must select a product", "Error", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+			
+			boolean right = (new PasswordDialog()).getIsRight();
+			if(!right)
+			{
+				return;
+			}
+			
 			try
 			{
-				int row = -1;
-				if(card.compareTo("Supply") == 0)
-				{
-					row = supplyTable.getSelectedRow();
-				}
-				else if(card.compareTo("Other") == 0)
-				{
-					row = otherTable.getSelectedRow();
-				}
-				else
-				{
-					JOptionPane.showMessageDialog(MainFrame.overallFrame, "You must select a product from Supply or Other", "Error", JOptionPane.ERROR_MESSAGE);
-					return;
-				}
-				
-				if(row < 0)
-				{
-					JOptionPane.showMessageDialog(MainFrame.overallFrame, "You must select a product", "Error", JOptionPane.ERROR_MESSAGE);
-					return;
-				}
-				
 				if(card.compareTo("Supply") == 0)
 				{
 					Supply temp = dao.getAllSupplies().get(row);
@@ -287,34 +293,46 @@ public class InventoryPanel implements ActionListener
 		
 		if(e.getSource() == addProductBtn)
 		{
+			boolean right = (new PasswordDialog()).getIsRight();
+			if(!right)
+			{
+				return;
+			}
+			
 			//create a new frame to add new products
 			new AddProductFrame(this, dao);
 		}
 		
 		if(e.getSource() == editBtn)
 		{
+			int row = -1;
+			if(card.compareTo("Supply") == 0)
+			{
+				row = supplyTable.getSelectedRow();
+			}
+			else if(card.compareTo("Menu") == 0)
+			{
+				row = menuTable.getSelectedRow();
+			}
+			else
+			{
+				row = otherTable.getSelectedRow();
+			}
+			
+			if(row < 0)
+			{
+				JOptionPane.showMessageDialog(MainFrame.overallFrame, "You must select a product", "Error", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+			
+			boolean right = (new PasswordDialog()).getIsRight();
+			if(!right)
+			{
+				return;
+			}
+			
 			try
 			{
-				int row = -1;
-				if(card.compareTo("Supply") == 0)
-				{
-					row = supplyTable.getSelectedRow();
-				}
-				else if(card.compareTo("Menu") == 0)
-				{
-					row = menuTable.getSelectedRow();
-				}
-				else
-				{
-					row = otherTable.getSelectedRow();
-				}
-				
-				if(row < 0)
-				{
-					JOptionPane.showMessageDialog(MainFrame.overallFrame, "You must select a product", "Error", JOptionPane.ERROR_MESSAGE);
-					return;
-				}
-				
 				if(card.compareTo("Supply") == 0)
 				{
 					new AddProductFrame(this, dao, true, dao.getAllSupplies().get(row), null, null);
@@ -385,42 +403,40 @@ public class InventoryPanel implements ActionListener
 		
 		if(e.getSource() == deleteBtn)
 		{
+			int row = -1;
+			if(card.compareTo("Supply") == 0)
+			{
+				row = supplyTable.getSelectedRow();
+			}
+			else if(card.compareTo("Menu") == 0)
+			{
+				row = menuTable.getSelectedRow();
+			}
+			else
+			{
+				row = otherTable.getSelectedRow();
+			}
+			
+			if(row < 0)
+			{
+				JOptionPane.showMessageDialog(MainFrame.overallFrame, "You must select a product", "Error", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+			
+			boolean right = (new PasswordDialog()).getIsRight();
+			if(!right)
+			{
+				return;
+			}
+			
+			int response = JOptionPane.showConfirmDialog(MainFrame.overallFrame, "Delete this product?", "Confirm", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+			if (response != JOptionPane.YES_OPTION)
+			{
+				return;
+			}
+			
 			try
 			{
-				int row = -1;
-				if(card.compareTo("Supply") == 0)
-				{
-					row = supplyTable.getSelectedRow();
-				}
-				else if(card.compareTo("Menu") == 0)
-				{
-					row = menuTable.getSelectedRow();
-				}
-				else
-				{
-					row = otherTable.getSelectedRow();
-				}
-				
-				if(row < 0)
-				{
-					JOptionPane.showMessageDialog(MainFrame.overallFrame, "You must select a product", "Error", JOptionPane.ERROR_MESSAGE);
-					return;
-				}
-				
-				int response = JOptionPane.showConfirmDialog(MainFrame.overallFrame, "Delete this product?", "Confirm", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-				
-				if (response != JOptionPane.YES_OPTION)
-				{
-					return;
-				}
-				
-				boolean right = (new PasswordDialog()).getIsRight();
-				
-				if(!right)
-				{
-					return;
-				}
-				
 				if(card.compareTo("Supply") == 0)
 				{
 					List<Supply> temp = dao.getAllSupplies();
@@ -447,6 +463,12 @@ public class InventoryPanel implements ActionListener
 		
 		if(e.getSource() == recordBtn)
 		{
+			boolean right = (new PasswordDialog()).getIsRight();
+			if(!right)
+			{
+				return;
+			}
+			
 			new RecordFrame(dao);
 		}
 	}

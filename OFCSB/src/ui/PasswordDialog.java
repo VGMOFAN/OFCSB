@@ -96,4 +96,9 @@ public class PasswordDialog extends JDialog implements ActionListener
 	{
 		isRight = false;
 	}
+	
+	public void clear()
+	{
+		passField.setText("");
+	}
 }

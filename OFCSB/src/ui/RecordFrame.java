@@ -273,6 +273,12 @@ public class RecordFrame extends JFrame implements ActionListener
 		
 		if(e.getSource() == clearBtn)
 		{
+			boolean right = (new PasswordDialog()).getIsRight();
+			if(!right)
+			{
+				return;
+			}
+			
 			try
 			{
 				if(card.compareTo("Edit Price") == 0)
