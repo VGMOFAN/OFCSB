@@ -577,7 +577,7 @@ public class ProductDAO
 		{
 			if(theRecord.getType().compareTo("Delete Inventory") == 0)
 			{
-				myPpSt1 = myConn.prepareStatement("INSERT INTO Record (type, date, menu_item, edited_price, original_price, difference, supply_item, reason, amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+				myPpSt1 = myConn.prepareStatement("INSERT INTO Record (type, date, menu_item, edited_price, original_price, difference, supply_item, reason, amount, transaction_number) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 				
 				myPpSt1.setString(1, theRecord.getType());
 				myPpSt1.setString(2, theRecord.getDate());
@@ -588,6 +588,7 @@ public class ProductDAO
 				myPpSt1.setString(7, theRecord.getSupplyItem());
 				myPpSt1.setString(8, theRecord.getReason());
 				myPpSt1.setInt(9, theRecord.getAmount());
+				myPpSt1.setInt(10, theRecord.getTransNum());
 				
 				List<Supply> temp = searchSupply(theRecord.getSupplyItem());
 				int id = temp.get(0).getID();
@@ -601,7 +602,7 @@ public class ProductDAO
 			}
 			else
 			{
-				myPpSt1 = myConn.prepareStatement("INSERT INTO Record (type, date, menu_item, edited_price, original_price, difference, supply_item, reason, amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+				myPpSt1 = myConn.prepareStatement("INSERT INTO Record (type, date, menu_item, edited_price, original_price, difference, supply_item, reason, amount, transaction_number) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 				
 				myPpSt1.setString(1, theRecord.getType());
 				myPpSt1.setString(2, theRecord.getDate());
@@ -612,6 +613,7 @@ public class ProductDAO
 				myPpSt1.setString(7, theRecord.getSupplyItem());
 				myPpSt1.setString(8, theRecord.getReason());
 				myPpSt1.setInt(9, theRecord.getAmount());
+				myPpSt1.setInt(10, theRecord.getTransNum());
 				
 				myPpSt1.executeUpdate();
 			}
