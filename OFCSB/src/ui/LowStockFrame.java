@@ -19,6 +19,7 @@ import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -29,7 +30,7 @@ public class LowStockFrame extends JFrame implements ActionListener
 	private ProductDAO dao;
 	private JFrame lowStockFrame;
 	private JPanel lowStockPanel;
-	private JScrollPane lowStockPane;
+	private JScrollPane supplyPane, otherPane;
 	private JButton okBtn;
 	
 	public LowStockFrame(ProductDAO theDAO)
@@ -57,17 +58,38 @@ public class LowStockFrame extends JFrame implements ActionListener
 		}
 		catch(Exception e1)
 		{
-			e1.printStackTrace();
+			JOptionPane.showMessageDialog(lowStockFrame, "Error creating table: " + e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 		}
 		for(int i = 0; i < supplyTable.getColumnCount(); i++)
 		{
 			supplyTable.getColumnModel().getColumn(i).setCellRenderer(dtcr);
 		}
 		
-		lowStockPane = new JScrollPane();
-		lowStockPane.setBounds(10, 10, 500, 400);
-		lowStockPane.setViewportView(supplyTable);
-		lowStockPanel.add(lowStockPane);
+		JTable otherTable = new JTable();
+		try
+		{
+			List<Other> otherList = dao.getLowStockOthers();
+			OtherTableModel otherModel = new OtherTableModel(otherList);
+			otherTable.setModel(otherModel);
+		}
+		catch(Exception e1)
+		{
+			JOptionPane.showMessageDialog(lowStockFrame, "Error creating table: " + e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+		}
+		for(int i = 0; i < otherTable.getColumnCount(); i++)
+		{
+			otherTable.getColumnModel().getColumn(i).setCellRenderer(dtcr);
+		}
+		
+		supplyPane = new JScrollPane();
+		supplyPane.setBounds(10, 10, 500, 150);
+		supplyPane.setViewportView(supplyTable);
+		lowStockPanel.add(supplyPane);
+		
+		otherPane = new JScrollPane();
+		otherPane.setBounds(10, 170, 500, 150);
+		otherPane.setViewportView(otherTable);
+		lowStockPanel.add(otherPane);
 		
 		okBtn = new JButton("OK");
 		okBtn.setBounds(250, 440, 120, 33);
