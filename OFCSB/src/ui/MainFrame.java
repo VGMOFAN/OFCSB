@@ -26,7 +26,7 @@ public class MainFrame extends JFrame
 		//settings for the overall frame of the system
 		overallFrame = new JFrame("Ottawa Family Cinema Snack Bar System");
 		overallFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		overallFrame.setPreferredSize(new Dimension(650,500));
+		overallFrame.setPreferredSize(new Dimension(1800,1000));
 		overallFrame.setLayout(new BorderLayout());
 		overallFrame.setResizable(false);
 		

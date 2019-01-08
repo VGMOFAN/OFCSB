@@ -17,9 +17,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import core.Record;
 import dao.ProductDAO;
 
-
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class DeleteFromInventory extends JFrame implements ActionListener
@@ -28,10 +30,11 @@ public class DeleteFromInventory extends JFrame implements ActionListener
 	private JPanel contentsPanel;
 	
 	ProductDAO p;
+	Record r;
 	JTextField amount;
 	JButton enter, enter2;
 	JLabel title ;
-	String reason;
+	String reason,stringDate;
 	int item, numberOfItems;
 	List <String> itemNames= new ArrayList<>();
 	JComboBox <String> combobox;	
@@ -76,6 +79,9 @@ public class DeleteFromInventory extends JFrame implements ActionListener
 		enter2.addActionListener(this);
 		contentsPanel.add(enter2);
 		
+		Date date = new Date();
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		stringDate = formatter.format(date);
 	
 		setVisible(true);
 		
@@ -91,15 +97,18 @@ public class DeleteFromInventory extends JFrame implements ActionListener
 			el.printStackTrace();
 		}
 		
-	try {
-		for (int i =0; i<p.getAllMenus().size();i++)
+	
+		try {
+			for (int i =0; i<p.getAllSupplies().size();i++)
+			{
+				itemNames.add(p.getAllSupplies().get(i).getName());
+			}
+		} catch (Exception e) 
 		{
-			itemNames.add(p.getAllMenus().get(i).getName());
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-	} catch (SQLException e) {
-		
-		e.printStackTrace();
-	}
+	
 	
 	for(int i =0; i< itemNames.size();i++)
 	{
@@ -155,17 +164,28 @@ public class DeleteFromInventory extends JFrame implements ActionListener
 			enter.setVisible(false);
 			amount.setVisible(false);
 			
-			for (int i=0;i<numberOfItems; i++)
-			{
-			try {
-				p.decreaseInventory(p.getAllMenus().get(item));
-			} catch (SQLException e1) {
+			
+	try {
+		System.out.print ( ""+reason+numberOfItems);
+	} catch (Exception e2) {
+		// TODO Auto-generated catch block
+		e2.printStackTrace();
+	}
+				try {
+					p.
+					r = new Record( p.getAllSupplies().get(item).getID(),"Delete inventory" ,stringDate,p.getAllSupplies().get(item).getName(), reason,numberOfItems);
+					p.addRecord(r);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
-				e1.printStackTrace();
-			}
-			}
-			//Make sure to add the records
+			
+			
+			
 		}
 		
 	}
+
+	
 }

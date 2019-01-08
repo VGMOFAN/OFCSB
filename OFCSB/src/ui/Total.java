@@ -24,7 +24,7 @@ public class Total extends JFrame implements ActionListener
 {
 private JPanel contentsPanel;
 
-public static boolean clear;
+public boolean clear;
 ProductDAO p;
 JButton cash, debit,enter,back;
 double debitTotal, changeNumber;
@@ -40,7 +40,6 @@ JTextField amount;
 			JFrame popup = new JFrame();
 			setResizable(false);
 			setLayout(null);
-			setDefaultCloseOperation(popup.EXIT_ON_CLOSE);
 			setSize(500,400);  
 			
 			contentsPanel= new JPanel();
@@ -135,15 +134,15 @@ JTextField amount;
 		return clear;
 	}
 	
-	public List<Menu> cleared (boolean t)
+	public void cleared (boolean t)
 	{
 		if (t=true)
 		{
-			return transactionListCopy;
+			System.out.print("cleared");
 		}
 		else
 		{
-			return null;
+			System.out.print ("not cleared");
 		}
 	
 		
@@ -174,7 +173,7 @@ JTextField amount;
 			amount.setText(""+ debitTotal);
 			dollarSign.setVisible(true);
 			enter.setVisible(true);
-			System.out.print(debitTotal);
+			System.out.print(clear);
 			
 			
 		}
@@ -189,7 +188,7 @@ JTextField amount;
 			amount.setVisible(false);
 			dollarSign.setVisible(false);
 			title.setBounds(100,100, 300, 100);
-			
+			System.out.print(clear);
 
 			
 			
@@ -202,19 +201,19 @@ JTextField amount;
 					e1.printStackTrace();
 				}
 				transactionListCopy.get(i).setSold(transactionListCopy.get(i).getSold()+1);
-				System.out.print(""+transactionListCopy.get(i));
-				System.out.println (""+transactionListCopy.get(i).getSold());
+				
 			}
+		
+			clear = true;
 			
-			transactionListCopy.removeAll(transactionListCopy);
 			
-			
-			
+			System.out.print(clear);
 			
 		}
 		
 		if (e.getSource()== cash)
 		{
+			
 			debit.setVisible(false);
 			cash.setVisible(false);
 			back.setVisible(true);
@@ -227,11 +226,13 @@ JTextField amount;
 			
 			dollarSign.setVisible(true);
 			
+			
 			 
 		}
 		
-		if(e.getSource()== enter && title.getText().compareTo("Enter Amount Given:")==0)
+		if(e.getSource()== enter && title.getText().compareTo("Enter Amount Given:")==0 &&( Double.parseDouble(amount.getText()))>debitTotal)
 		{
+			
 			title.setText("Change Due:");
 			debit.setVisible(false);
 			cash.setVisible(false);
@@ -255,12 +256,18 @@ JTextField amount;
 					e1.printStackTrace();
 				}
 				transactionListCopy.get(i).setSold(transactionListCopy.get(i).getSold()+1);
-				System.out.print(""+transactionListCopy.get(i));
+				try {
+					p.updateMenu(transactionListCopy.get(i));
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				System.out.println(""+transactionListCopy.get(i));
 				System.out.println (""+transactionListCopy.get(i).getSold());
 			}
 			
-			transactionListCopy.removeAll(transactionListCopy);
-		
+			clear=true;
+			
 		}
 		
 		if (e.getSource()==back)

@@ -6,7 +6,9 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
@@ -18,6 +20,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import core.Record;
 import dao.ProductDAO;
 
 
@@ -25,9 +28,11 @@ public class EditPrice extends JFrame implements ActionListener
 {
 private JPanel contentsPanel;
 
+Record r;
 JComboBox<String> comboBox;
 JButton enter, enter2;
 JLabel title;
+String stringDate;
 JTextField amount;
 int item;
 double changedPrice;
@@ -54,13 +59,14 @@ ProductDAO p;
 			
 	
 		
-
+			//This is the title at the top explains what to do
 			title = new JLabel ("What Product:");
 			title.setBounds(150, 0, 200, 50);
 			title.setFont(new Font("Georgia", Font.BOLD, 26));
 			title.setForeground(new Color (0,0,0));
 			contentsPanel.add(title);
 			
+			//Enter when done putting input
 			enter= new JButton("ENTER");
 			enter.setBounds(200,200, 100, 50);
 			enter.addActionListener(this);
@@ -68,18 +74,24 @@ ProductDAO p;
 			enter.addActionListener(this);
 			contentsPanel.add(enter);
 			
+			//The input area
 			amount = new JTextField();
 			amount.setText("");
 			amount.setBounds(150,125,200,30);
 			amount.setVisible(false);
 			contentsPanel.add(amount);
 			
+			//Another enter button when user done putting input
 			enter2= new JButton("ENTER");
 			enter2.setBounds(200,200, 100, 50);
 			enter2.addActionListener(this);
 			enter2.setVisible(false);
 			enter2.addActionListener(this);
 			contentsPanel.add(enter2);
+			
+			Date date = new Date();
+			SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+			stringDate = formatter.format(date);
 		
 		
 		
@@ -142,7 +154,15 @@ contentsPanel.add(comboBox);
 				e1.printStackTrace();
 			}
 		}
-		//Ensure to add the records
+		
+		try {
+			r = new Record( p.getAllSupplies().get(item).getID(),"Edit Price" ,stringDate,p.getAllSupplies().get(item).getName(), reason,numberOfItems);
+			p.addRecord(r);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		
 	}
 	

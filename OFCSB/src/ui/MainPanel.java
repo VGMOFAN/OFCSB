@@ -21,14 +21,13 @@ public class MainPanel implements ActionListener
 	private JLabel titleLabel;
 	private JPanel mainMenuPanel;
 	private JButton cashBtn, inventoryBtn;
-	private ImageIcon buttonImage;
+	private JLabel logoImage, blueborder;
 	
 	//constructor
 	public MainPanel()
 	{
 		//the image that is needed for the buttons
-		buttonImage = new ImageIcon("Image/button.png");
-		Font buttonFont = new Font("Arial", Font.PLAIN, 23);
+		
 		
 		//overall panel
 		mainMenuPanel = new JPanel();
@@ -37,16 +36,22 @@ public class MainPanel implements ActionListener
 		//setting for the label on the top of the main frame
 		titleLabel = new JLabel("Ottawa Family Cinema Snack Bar");
 		titleLabel.setOpaque(true);
-		titleLabel.setBounds(0, 0, 650, 100);
+		titleLabel.setBounds(565, 30, 650, 100);
 		titleLabel.setFont(new Font("Arial", Font.PLAIN, 43));
-		titleLabel.setBackground(Color.CYAN);
+		
+		logoImage = new JLabel (new ImageIcon("Images/logo.png"));
+		logoImage.setBounds(1300, -30, 500, 300);
+		mainMenuPanel.add(logoImage);
+		
+		blueborder = new JLabel (new ImageIcon("Images/blue border.png"));
+		blueborder.setBounds(10, 10, 1800, 1000);
+		mainMenuPanel.add(blueborder);
+		
 		mainMenuPanel.add(titleLabel);
 		
 		//jump to cash system if this button is clicked
-		cashBtn = new JButton("Cash System");
-		cashBtn.setBounds(225, 220, 200, 65);
-		cashBtn.setFont(buttonFont);
-		cashBtn.setIcon(buttonImage);
+		cashBtn = new JButton(new ImageIcon("Images/cashSystem.png"));
+		cashBtn.setBounds(700, 350, 300, 100);
 		cashBtn.setHorizontalTextPosition(JButton.CENTER);
 		cashBtn.setVerticalTextPosition(JButton.CENTER);
 		cashBtn.setContentAreaFilled(false);
@@ -55,10 +60,8 @@ public class MainPanel implements ActionListener
 		mainMenuPanel.add(cashBtn);
 		
 		//jump to inventory system if this button is clicked
-		inventoryBtn = new JButton("Inventory System");
-		inventoryBtn.setBounds(225, 300, 200, 65);
-		inventoryBtn.setFont(buttonFont);
-		inventoryBtn.setIcon(buttonImage);
+		inventoryBtn = new JButton(new ImageIcon("Images/inventorySystemButton.png"));
+		inventoryBtn.setBounds(700, 500, 300, 100);
 		inventoryBtn.setHorizontalTextPosition(JButton.CENTER);
 		inventoryBtn.setVerticalTextPosition(JButton.CENTER);
 		inventoryBtn.setContentAreaFilled(false);

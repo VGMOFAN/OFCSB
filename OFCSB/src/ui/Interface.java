@@ -36,7 +36,7 @@ public class Interface implements ActionListener {
 	Menu[] allMenuItems;
 	JPanel contentsPanel;
 	JLabel border, borderTwo;
-	JButton transVoid, deleteInventory, editPrice, staffPrice, totalButton;
+	JButton transVoid, deleteInventory, editPrice, staffPrice, totalButton, homebutton;
 	ImageIcon spButton1;
 	int colourChange, test, testOne, candi ;
 	double price1, price2, price3, price4, price5, total;
@@ -166,6 +166,14 @@ public class Interface implements ActionListener {
 		deleteInventory.setBackground(new Color(150, 0, 0));
 		deleteInventory.setBorder(null);
 		border.add(deleteInventory);
+		
+		homebutton = new JButton(new ImageIcon("Images/homebutton.png"));
+		homebutton.addActionListener(this);
+		homebutton.setBounds(1760, 0, 50, 50);
+		homebutton.setOpaque(false);
+		homebutton.setBackground(new Color(150, 0, 0));
+		homebutton.setBorder(null);
+		border.add(homebutton);
 
 		// staffPrice(JButton): This allows access to the menu of the staff
 		// prices on products
@@ -494,8 +502,15 @@ public class Interface implements ActionListener {
 
 
 
-	public void actionPerformed(ActionEvent e) {
-
+	public void actionPerformed(ActionEvent e)
+	{
+		if (e.getSource() == homebutton)
+		{
+			MainFrame.overallFrame.getContentPane().removeAll();
+			MainFrame.overallFrame.repaint();
+			new MainPanel();
+		}
+		
 		if (e.getSource() == transVoid)
 		{
 			TransactionVoid tv = new TransactionVoid();
@@ -505,12 +520,10 @@ public class Interface implements ActionListener {
 			area2 = tv.getDuplicateArea();
 			tv.setJTextArea2(totalArea);
 			totalArea = tv.getNewArea();
-		if (tv.cleared()==1)
-		{
-			transactionList =tv.getTransactionListCopyTV(); 
-			System.out.print("hi " +transactionList);
-			
-		}
+			total = tv.getResetTotal();
+			transactionList.clear();
+			System.out.print (" hi "+ transactionList+ total);
+		
 		
 		}
 
@@ -520,7 +533,16 @@ public class Interface implements ActionListener {
 			System.out.println(total);
 			t.setDebitTotal(total);
 			t.setTransactionListCopy(transactionList);
-			//t.cleared(t.getClear());
+			
+			System.out.println(transactionList);
+				area2.setText("");
+				totalArea.setText("Total: ");
+				t.cleared(t.getClear());
+				transactionList.clear();
+				total = 0;
+				System.out.print(" hi "+ transactionList+ total);
+			
+			
 		}
 
 		if (e.getSource() == editPrice) {

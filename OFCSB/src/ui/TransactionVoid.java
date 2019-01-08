@@ -23,7 +23,8 @@ public class TransactionVoid extends JFrame implements ActionListener
 	JTextArea duplicateArea;
 	JTextArea newArea;
 	JButton yes, no;
-	int determine, clear;
+	int determine;
+	double resetTotal;
 	List<Menu> transactionListCopy = new ArrayList<>();
 	
 public JPanel contentsPanel;
@@ -55,6 +56,7 @@ title2.setFont(new Font("Georgia", Font.BOLD, 26));
 title2.setForeground(new Color (0,0,0));
 contentsPanel.add(title2);
 
+resetTotal=0;
 
 
 yes= new JButton("YES");
@@ -75,17 +77,7 @@ setVisible(true);
 		
 	
 }
-	public int cleared ()
-	{
-		if (clear == 1)
-		{
-			return clear;
-		}
-		else
-		{
-			return 0;
-		}
-	}
+	
 	public void setTransactionListCopyTV (List<Menu> t)
 	{
 		transactionListCopy =t;
@@ -105,22 +97,22 @@ public void actionPerformed(ActionEvent e)
 	{
 		System.out.print ("yes");
 		determine = 1;
-		System.out.print (determine);
-		clear=1;
+	
+	
 		
 	}
 	
 	if (e.getSource()==no)
 	{
 		determine = 0;
-		System.out.print(determine);
+		
 	}
 	
 	if (determine==1)
 	{
 	duplicateArea.setText("");
 	newArea.setText("");
-	transactionListCopy.removeAll(transactionListCopy);
+
 
 	
 	}
@@ -145,6 +137,13 @@ public JTextArea getNewArea()
 {
 	return newArea;
 }
+
+public double getResetTotal ()
+{
+	return resetTotal;
+}
+
+
 
 
 
