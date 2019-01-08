@@ -502,6 +502,23 @@ public class ProductDAO
 		}
 	}
 	
+	public void decreaseInventory(Supply theSupply, int amount) throws SQLException
+	{
+		PreparedStatement myPpSt = null;
+		
+		try
+		{
+			myPpSt = myConn.prepareStatement("UPDATE Supply SET amount=? WHERE id=?");
+			myPpSt.setInt(1, theSupply.getAmount() - amount);
+			myPpSt.setInt(2, theSupply.getID());
+			myPpSt.executeUpdate();
+		}
+		finally
+		{
+			close(myPpSt);
+		}
+	}
+	
 	//delete a Product from the database depends on its type and id
 	public void deleteProduct(String type, int id) throws SQLException
 	{
@@ -558,25 +575,9 @@ public class ProductDAO
 		
 		try
 		{
-			if(theRecord.getType().compareTo("Edit Price") == 0)
+			if(theRecord.getType().compareTo("Delete Inventory") == 0)
 			{
-				myPpSt1 = myConn.prepareStatement("INSERT INTO Record (type, date, menu_item, edited_price, original_price, differece, supply_item, reason, amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-				
-				myPpSt1.setString(1, theRecord.getType());
-				myPpSt1.setString(2, theRecord.getDate());
-				myPpSt1.setString(3, theRecord.getMenuItem());
-				myPpSt1.setDouble(4, theRecord.getEditedPrice());
-				myPpSt1.setDouble(5, theRecord.getOriginalPrice());
-				myPpSt1.setDouble(6, theRecord.getDifference());
-				myPpSt1.setString(7, theRecord.getSupplyItem());
-				myPpSt1.setString(8, theRecord.getReason());
-				myPpSt1.setInt(9, theRecord.getAmount());
-				
-				myPpSt1.executeUpdate();
-			}
-			else
-			{
-				myPpSt1 = myConn.prepareStatement("INSERT INTO Record (type, date, menu_item, edited_price, original_price, differece, supply_item, reason, amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+				myPpSt1 = myConn.prepareStatement("INSERT INTO Record (type, date, menu_item, edited_price, original_price, difference, supply_item, reason, amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 				
 				myPpSt1.setString(1, theRecord.getType());
 				myPpSt1.setString(2, theRecord.getDate());
@@ -597,6 +598,22 @@ public class ProductDAO
 				
 				myPpSt1.executeUpdate();
 				myPpSt2.executeUpdate();
+			}
+			else
+			{
+				myPpSt1 = myConn.prepareStatement("INSERT INTO Record (type, date, menu_item, edited_price, original_price, difference, supply_item, reason, amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+				
+				myPpSt1.setString(1, theRecord.getType());
+				myPpSt1.setString(2, theRecord.getDate());
+				myPpSt1.setString(3, theRecord.getMenuItem());
+				myPpSt1.setDouble(4, theRecord.getEditedPrice());
+				myPpSt1.setDouble(5, theRecord.getOriginalPrice());
+				myPpSt1.setDouble(6, theRecord.getDifference());
+				myPpSt1.setString(7, theRecord.getSupplyItem());
+				myPpSt1.setString(8, theRecord.getReason());
+				myPpSt1.setInt(9, theRecord.getAmount());
+				
+				myPpSt1.executeUpdate();
 			}
 		}
 		finally
