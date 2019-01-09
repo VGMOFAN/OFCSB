@@ -1,7 +1,7 @@
 package ui;
 
 /*
- * Author: Alex Zhou
+ * Author: Alex Zhou//Suveatha K.
  * Date: 2018.10.26
  */
 
