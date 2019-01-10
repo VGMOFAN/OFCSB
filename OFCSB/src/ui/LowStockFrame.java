@@ -13,10 +13,12 @@ import tms.OtherTableModel;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -36,6 +38,12 @@ public class LowStockFrame extends JFrame implements ActionListener
 	public LowStockFrame(ProductDAO theDAO)
 	{
 		dao = theDAO;
+		
+		//the image that is needed for the buttons
+		ImageIcon buttonImage = new ImageIcon("Images/Button.png");
+				
+		//the font for buttons
+		Font buttonFont = new Font("Arial", Font.PLAIN, 30);
 		
 		DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
 		dtcr.setHorizontalTextPosition(DefaultTableCellRenderer.CENTER);
@@ -91,8 +99,14 @@ public class LowStockFrame extends JFrame implements ActionListener
 		otherPane.setViewportView(otherTable);
 		lowStockPanel.add(otherPane);
 		
-		okBtn = new JButton("OK");
+		okBtn = new JButton(buttonImage);
 		okBtn.setBounds(250, 440, 120, 33);
+		okBtn.setText("OK");
+		okBtn.setFont(buttonFont);
+		okBtn.setHorizontalTextPosition(JButton.CENTER);
+		okBtn.setVerticalTextPosition(JButton.CENTER);
+		okBtn.setContentAreaFilled(false);
+		okBtn.setBorderPainted(false);
 		okBtn.addActionListener(this);
 		lowStockPanel.add(okBtn);
 

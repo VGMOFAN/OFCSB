@@ -27,7 +27,10 @@ public class MainPanel implements ActionListener
 	public MainPanel()
 	{
 		//the image that is needed for the buttons
+		ImageIcon buttonImage = new ImageIcon("Images/Button.png");
 		
+		//the font for buttons
+		Font buttonFont = new Font("Arial", Font.PLAIN, 30);
 		
 		//overall panel
 		mainMenuPanel = new JPanel();
@@ -50,8 +53,10 @@ public class MainPanel implements ActionListener
 		mainMenuPanel.add(titleLabel);
 		
 		//jump to cash system if this button is clicked
-		cashBtn = new JButton(new ImageIcon("Images/cashSystem.png"));
+		cashBtn = new JButton(buttonImage);
 		cashBtn.setBounds(700, 350, 300, 100);
+		cashBtn.setText("Cash System");
+		cashBtn.setFont(buttonFont);
 		cashBtn.setHorizontalTextPosition(JButton.CENTER);
 		cashBtn.setVerticalTextPosition(JButton.CENTER);
 		cashBtn.setContentAreaFilled(false);
@@ -60,8 +65,10 @@ public class MainPanel implements ActionListener
 		mainMenuPanel.add(cashBtn);
 		
 		//jump to inventory system if this button is clicked
-		inventoryBtn = new JButton(new ImageIcon("Images/inventorySystemButton.png"));
+		inventoryBtn = new JButton(buttonImage);
 		inventoryBtn.setBounds(700, 500, 300, 100);
+		inventoryBtn.setText("Inventory System");
+		inventoryBtn.setFont(buttonFont);
 		inventoryBtn.setHorizontalTextPosition(JButton.CENTER);
 		inventoryBtn.setVerticalTextPosition(JButton.CENTER);
 		inventoryBtn.setContentAreaFilled(false);

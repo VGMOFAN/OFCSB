@@ -11,10 +11,12 @@ import tms.SupplyTableModel;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -38,6 +40,12 @@ public class ExpirationFrame extends JFrame implements ActionListener
 	public ExpirationFrame(ProductDAO theDAO)
 	{
 		dao = theDAO;
+		
+		//the image that is needed for the buttons
+		ImageIcon buttonImage = new ImageIcon("Images/Button.png");
+						
+		//the font for buttons
+		Font buttonFont = new Font("Arial", Font.PLAIN, 30);
 		
 		//a table cell renderer in order to display table values at the center of the cell
 		dtcr = new DefaultTableCellRenderer();
@@ -77,13 +85,25 @@ public class ExpirationFrame extends JFrame implements ActionListener
 		expirationPane.setViewportView(supplyTable);
 		expirationPanel.add(expirationPane);
 		
-		deleteBtn = new JButton("Delete");
+		deleteBtn = new JButton(buttonImage);
 		deleteBtn.setBounds(150, 440, 120, 33);
+		deleteBtn.setText("Delete");
+		deleteBtn.setFont(buttonFont);
+		deleteBtn.setHorizontalTextPosition(JButton.CENTER);
+		deleteBtn.setVerticalTextPosition(JButton.CENTER);
+		deleteBtn.setContentAreaFilled(false);
+		deleteBtn.setBorderPainted(false);
 		deleteBtn.addActionListener(this);
 		expirationPanel.add(deleteBtn);
 		
-		okBtn = new JButton("OK");
+		okBtn = new JButton(buttonImage);
 		okBtn.setBounds(300, 440, 120, 33);
+		okBtn.setText("OK");
+		okBtn.setFont(buttonFont);
+		okBtn.setHorizontalTextPosition(JButton.CENTER);
+		okBtn.setVerticalTextPosition(JButton.CENTER);
+		okBtn.setContentAreaFilled(false);
+		okBtn.setBorderPainted(false);
 		okBtn.addActionListener(this);
 		expirationPanel.add(okBtn);
 		

@@ -12,10 +12,12 @@ import tms.RecordTableModel;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -43,6 +45,12 @@ public class RecordFrame extends JFrame implements ActionListener
 	public RecordFrame(ProductDAO theDAO)
 	{
 		dao = theDAO;
+		
+		//the image that is needed for the buttons
+		ImageIcon buttonImage = new ImageIcon("Images/Button.png");
+				
+		//the font for buttons
+		Font buttonFont = new Font("Arial", Font.PLAIN, 30);
 		
 		dtcr = new DefaultTableCellRenderer();
 		dtcr.setHorizontalTextPosition(DefaultTableCellRenderer.CENTER);
@@ -133,33 +141,69 @@ public class RecordFrame extends JFrame implements ActionListener
 		debitTransPane.setViewportView(debitTransTable);
 		switchPanel.add(debitTransPane, "Debit Transaction");
 		
-		editPriceBtn = new JButton("Edited price");
+		editPriceBtn = new JButton(buttonImage);
 		editPriceBtn.setBounds(70, 440, 150, 33);
+		editPriceBtn.setText("Edited price");
+		editPriceBtn.setFont(buttonFont);
+		editPriceBtn.setHorizontalTextPosition(JButton.CENTER);
+		editPriceBtn.setVerticalTextPosition(JButton.CENTER);
+		editPriceBtn.setContentAreaFilled(false);
+		editPriceBtn.setBorderPainted(false);
 		editPriceBtn.addActionListener(this);
 		recordPanel.add(editPriceBtn);
 		
-		deleteInventoryBtn = new JButton("Deleted inventory");
+		deleteInventoryBtn = new JButton(buttonImage);
 		deleteInventoryBtn.setBounds(230, 440, 150, 33);
+		deleteInventoryBtn.setText("Deleted inventory");
+		deleteInventoryBtn.setFont(buttonFont);
+		deleteInventoryBtn.setHorizontalTextPosition(JButton.CENTER);
+		deleteInventoryBtn.setVerticalTextPosition(JButton.CENTER);
+		deleteInventoryBtn.setContentAreaFilled(false);
+		deleteInventoryBtn.setBorderPainted(false);
 		deleteInventoryBtn.addActionListener(this);
 		recordPanel.add(deleteInventoryBtn);
 		
-		debitTransBtn = new JButton("Debit Transaction");
+		debitTransBtn = new JButton(buttonImage);
 		debitTransBtn.setBounds(400, 440, 150, 33);
+		debitTransBtn.setText("Debit Transaction");
+		debitTransBtn.setFont(buttonFont);
+		debitTransBtn.setHorizontalTextPosition(JButton.CENTER);
+		debitTransBtn.setVerticalTextPosition(JButton.CENTER);
+		debitTransBtn.setContentAreaFilled(false);
+		debitTransBtn.setBorderPainted(false);
 		debitTransBtn.addActionListener(this);
 		recordPanel.add(debitTransBtn);
 		
-		deleteBtn = new JButton("Delete record");
+		deleteBtn = new JButton(buttonImage);
 		deleteBtn.setBounds(550, 70, 120 ,33);
+		deleteBtn.setText("Delete record");
+		deleteBtn.setFont(buttonFont);
+		deleteBtn.setHorizontalTextPosition(JButton.CENTER);
+		deleteBtn.setVerticalTextPosition(JButton.CENTER);
+		deleteBtn.setContentAreaFilled(false);
+		deleteBtn.setBorderPainted(false);
 		deleteBtn.addActionListener(this);
 		recordPanel.add(deleteBtn);
 		
-		clearBtn = new JButton("Clear all");
+		clearBtn = new JButton(buttonImage);
 		clearBtn.setBounds(550, 150, 120 ,33);
+		clearBtn.setText("Clear all");
+		clearBtn.setFont(buttonFont);
+		clearBtn.setHorizontalTextPosition(JButton.CENTER);
+		clearBtn.setVerticalTextPosition(JButton.CENTER);
+		clearBtn.setContentAreaFilled(false);
+		clearBtn.setBorderPainted(false);
 		clearBtn.addActionListener(this);
 		recordPanel.add(clearBtn);
 		
-		okBtn = new JButton("OK");
+		okBtn = new JButton(buttonImage);
 		okBtn.setBounds(550, 250, 120 ,33);
+		okBtn.setText("OK");
+		okBtn.setFont(buttonFont);
+		okBtn.setHorizontalTextPosition(JButton.CENTER);
+		okBtn.setVerticalTextPosition(JButton.CENTER);
+		okBtn.setContentAreaFilled(false);
+		okBtn.setBorderPainted(false);
 		okBtn.addActionListener(this);
 		recordPanel.add(okBtn);
 		

@@ -14,10 +14,12 @@ import tms.MenuTableModel;
 import tms.OtherTableModel;
 
 import java.awt.CardLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -48,6 +50,12 @@ public class InventoryPanel implements ActionListener
 		{
 			JOptionPane.showMessageDialog(MainFrame.overallFrame, "Error connecting to database: " + e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 		}
+		
+		//the image that is needed for the buttons
+		ImageIcon buttonImage = new ImageIcon("Images/Button.png");
+				
+		//the font for buttons
+		Font buttonFont = new Font("Arial", Font.PLAIN, 30);
 		
 		//setting for inventory panel
 		inventoryPanel = new JPanel();
@@ -127,18 +135,36 @@ public class InventoryPanel implements ActionListener
 		searchTF.setBounds(10, 20, 300, 33);
 		inventoryPanel.add(searchTF);
 		
-		supplyBtn = new JButton("Supply");
+		supplyBtn = new JButton(buttonImage);
 		supplyBtn.setBounds(100, 430, 100, 33);
+		supplyBtn.setText("Supply");
+		supplyBtn.setFont(buttonFont);
+		supplyBtn.setHorizontalTextPosition(JButton.CENTER);
+		supplyBtn.setVerticalTextPosition(JButton.CENTER);
+		supplyBtn.setContentAreaFilled(false);
+		supplyBtn.setBorderPainted(false);
 		supplyBtn.addActionListener(this);
 		inventoryPanel.add(supplyBtn);
 		
-		menuBtn = new JButton("Menu");
+		menuBtn = new JButton(buttonImage);
 		menuBtn.setBounds(200, 430, 100, 33);
+		menuBtn.setText("Menu");
+		menuBtn.setFont(buttonFont);
+		menuBtn.setHorizontalTextPosition(JButton.CENTER);
+		menuBtn.setVerticalTextPosition(JButton.CENTER);
+		menuBtn.setContentAreaFilled(false);
+		menuBtn.setBorderPainted(false);
 		menuBtn.addActionListener(this);
 		inventoryPanel.add(menuBtn);
 		
-		otherBtn = new JButton("Other");
+		otherBtn = new JButton(buttonImage);
 		otherBtn.setBounds(300, 430, 100, 33);
+		otherBtn.setText("Other");
+		otherBtn.setFont(buttonFont);
+		otherBtn.setHorizontalTextPosition(JButton.CENTER);
+		otherBtn.setVerticalTextPosition(JButton.CENTER);
+		otherBtn.setContentAreaFilled(false);
+		otherBtn.setBorderPainted(false);
 		otherBtn.addActionListener(this);
 		inventoryPanel.add(otherBtn);
 		
@@ -148,47 +174,95 @@ public class InventoryPanel implements ActionListener
 		inventoryPanel.add(homeBtn);
 		
 		//search button to search
-		searchBtn = new JButton("Search");
+		searchBtn = new JButton(buttonImage);
 		searchBtn.setBounds(320, 20, 100, 33);
+		searchBtn.setText("Search");
+		searchBtn.setFont(buttonFont);
+		searchBtn.setHorizontalTextPosition(JButton.CENTER);
+		searchBtn.setVerticalTextPosition(JButton.CENTER);
+		searchBtn.setContentAreaFilled(false);
+		searchBtn.setBorderPainted(false);
 		searchBtn.addActionListener(this);
 		inventoryPanel.add(searchBtn);
 		
-		expirationBtn = new JButton("Expirations");
+		expirationBtn = new JButton(buttonImage);
 		expirationBtn.setBounds(520, 90, 120, 33);
+		expirationBtn.setText("Expirations");
+		expirationBtn.setFont(buttonFont);
+		expirationBtn.setHorizontalTextPosition(JButton.CENTER);
+		expirationBtn.setVerticalTextPosition(JButton.CENTER);
+		expirationBtn.setContentAreaFilled(false);
+		expirationBtn.setBorderPainted(false);
 		expirationBtn.addActionListener(this);
 		inventoryPanel.add(expirationBtn);
 		
-		lowStockBtn = new JButton("Low-stocks");
+		lowStockBtn = new JButton(buttonImage);
 		lowStockBtn.setBounds(520, 140, 120, 33);
+		lowStockBtn.setText("Low-stocks");
+		lowStockBtn.setFont(buttonFont);
+		lowStockBtn.setHorizontalTextPosition(JButton.CENTER);
+		lowStockBtn.setVerticalTextPosition(JButton.CENTER);
+		lowStockBtn.setContentAreaFilled(false);
+		lowStockBtn.setBorderPainted(false);
 		lowStockBtn.addActionListener(this);
 		inventoryPanel.add(lowStockBtn);
 		
 		//create a new frame to add inventory to existing products if this button is clicked
-		addInventoryBtn = new JButton("Add Inventory");
+		addInventoryBtn = new JButton(buttonImage);
 		addInventoryBtn.setBounds(520, 190, 120, 33);
+		addInventoryBtn.setText("Add Inventory");
+		addInventoryBtn.setFont(buttonFont);
+		addInventoryBtn.setHorizontalTextPosition(JButton.CENTER);
+		addInventoryBtn.setVerticalTextPosition(JButton.CENTER);
+		addInventoryBtn.setContentAreaFilled(false);
+		addInventoryBtn.setBorderPainted(false);
 		addInventoryBtn.addActionListener(this);
 		inventoryPanel.add(addInventoryBtn);
 		
 		//create a new frame to edit the properties of selected product if this button is clicked
-		editBtn = new JButton("Edit Product");
+		editBtn = new JButton(buttonImage);
 		editBtn.setBounds(520, 240, 120, 33);
+		editBtn.setText("Edit Product");
+		editBtn.setFont(buttonFont);
+		editBtn.setHorizontalTextPosition(JButton.CENTER);
+		editBtn.setVerticalTextPosition(JButton.CENTER);
+		editBtn.setContentAreaFilled(false);
+		editBtn.setBorderPainted(false);
 		editBtn.addActionListener(this);
 		inventoryPanel.add(editBtn);
 		
 		//create a new frame to add a new type of product if this button is clicked
-		addProductBtn = new JButton("Add Product");
+		addProductBtn = new JButton(buttonImage);
 		addProductBtn.setBounds(520, 290, 120, 33);
+		addProductBtn.setText("Add Product");
+		addProductBtn.setFont(buttonFont);
+		addProductBtn.setHorizontalTextPosition(JButton.CENTER);
+		addProductBtn.setVerticalTextPosition(JButton.CENTER);
+		addProductBtn.setContentAreaFilled(false);
+		addProductBtn.setBorderPainted(false);
 		addProductBtn.addActionListener(this);
 		inventoryPanel.add(addProductBtn);
 		
 		//delete selected product from the list
-		deleteBtn = new JButton("Delete Product");
+		deleteBtn = new JButton(buttonImage);
 		deleteBtn.setBounds(520, 340, 120, 33);
+		deleteBtn.setText("Delete Product");
+		deleteBtn.setFont(buttonFont);
+		deleteBtn.setHorizontalTextPosition(JButton.CENTER);
+		deleteBtn.setVerticalTextPosition(JButton.CENTER);
+		deleteBtn.setContentAreaFilled(false);
+		deleteBtn.setBorderPainted(false);
 		deleteBtn.addActionListener(this);
 		inventoryPanel.add(deleteBtn);
 		
-		recordBtn = new JButton("Records");
+		recordBtn = new JButton(buttonImage);
 		recordBtn.setBounds(520, 390, 120, 33);
+		recordBtn.setText("Records");
+		recordBtn.setFont(buttonFont);
+		recordBtn.setHorizontalTextPosition(JButton.CENTER);
+		recordBtn.setVerticalTextPosition(JButton.CENTER);
+		recordBtn.setContentAreaFilled(false);
+		recordBtn.setBorderPainted(false);
 		recordBtn.addActionListener(this);
 		inventoryPanel.add(recordBtn);
 		

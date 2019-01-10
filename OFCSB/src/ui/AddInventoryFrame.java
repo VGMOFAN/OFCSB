@@ -12,10 +12,12 @@ import dao.ProductDAO;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -43,6 +45,12 @@ public class AddInventoryFrame extends JFrame implements ActionListener
 		dao = theDAO;
 		supply = theSupply;
 		other = theOther;
+		
+		//the image that is needed for the buttons
+		ImageIcon buttonImage = new ImageIcon("Images/Button.png");
+				
+		//the font for buttons
+		Font buttonFont = new Font("Arial", Font.PLAIN, 30);
 		
 		addInventoryFrame = new JFrame("Add Inventory");
 		addInventoryFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -127,33 +135,69 @@ public class AddInventoryFrame extends JFrame implements ActionListener
 			setDisabled(dayTF);
 		}
 		
-		add12Btn = new JButton("+12");
+		add12Btn = new JButton(buttonImage);
 		add12Btn.setBounds(280, 120, 60, 33);
+		add12Btn.setText("+12");
+		add12Btn.setFont(buttonFont);
+		add12Btn.setHorizontalTextPosition(JButton.CENTER);
+		add12Btn.setVerticalTextPosition(JButton.CENTER);
+		add12Btn.setContentAreaFilled(false);
+		add12Btn.setBorderPainted(false);
 		add12Btn.addActionListener(this);
 		addInventoryPanel.add(add12Btn);
 		
-		add16Btn = new JButton("+16");
+		add16Btn = new JButton(buttonImage);
 		add16Btn.setBounds(360, 120, 60, 33);
+		add16Btn.setText("+16");
+		add16Btn.setFont(buttonFont);
+		add16Btn.setHorizontalTextPosition(JButton.CENTER);
+		add16Btn.setVerticalTextPosition(JButton.CENTER);
+		add16Btn.setContentAreaFilled(false);
+		add16Btn.setBorderPainted(false);
 		add16Btn.addActionListener(this);
 		addInventoryPanel.add(add16Btn);
 		
-		add24Btn = new JButton("+24");
+		add24Btn = new JButton(buttonImage);
 		add24Btn.setBounds(440, 120, 60, 33);
+		add24Btn.setText("+24");
+		add24Btn.setFont(buttonFont);
+		add24Btn.setHorizontalTextPosition(JButton.CENTER);
+		add24Btn.setVerticalTextPosition(JButton.CENTER);
+		add24Btn.setContentAreaFilled(false);
+		add24Btn.setBorderPainted(false);
 		add24Btn.addActionListener(this);
 		addInventoryPanel.add(add24Btn);
 		
-		add25Btn = new JButton("+25");
+		add25Btn = new JButton(buttonImage);
 		add25Btn.setBounds(520, 120, 60, 33);
+		add25Btn.setText("+25");
+		add25Btn.setFont(buttonFont);
+		add25Btn.setHorizontalTextPosition(JButton.CENTER);
+		add25Btn.setVerticalTextPosition(JButton.CENTER);
+		add25Btn.setContentAreaFilled(false);
+		add25Btn.setBorderPainted(false);
 		add25Btn.addActionListener(this);
 		addInventoryPanel.add(add25Btn);
 		
-		addBtn = new JButton("Add");
+		addBtn = new JButton(buttonImage);
 		addBtn.setBounds(100, 400, 120, 33);
+		addBtn.setText("Add");
+		addBtn.setFont(buttonFont);
+		addBtn.setHorizontalTextPosition(JButton.CENTER);
+		addBtn.setVerticalTextPosition(JButton.CENTER);
+		addBtn.setContentAreaFilled(false);
+		addBtn.setBorderPainted(false);
 		addBtn.addActionListener(this);
 		addInventoryPanel.add(addBtn);
 		
-		cancelBtn = new JButton("Cancel");
+		cancelBtn = new JButton(buttonImage);
 		cancelBtn.setBounds(400, 400, 120, 33);
+		cancelBtn.setText("Cancel");
+		cancelBtn.setFont(buttonFont);
+		cancelBtn.setHorizontalTextPosition(JButton.CENTER);
+		cancelBtn.setVerticalTextPosition(JButton.CENTER);
+		cancelBtn.setContentAreaFilled(false);
+		cancelBtn.setBorderPainted(false);
 		cancelBtn.addActionListener(this);
 		addInventoryPanel.add(cancelBtn);
 		

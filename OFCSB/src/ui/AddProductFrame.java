@@ -13,10 +13,12 @@ import dao.ProductDAO;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
@@ -53,6 +55,12 @@ public class AddProductFrame extends JFrame implements ActionListener
 		supply = theSupply;
 		menu = theMenu;
 		other = theOther;
+		
+		//the image that is needed for the buttons
+		ImageIcon buttonImage = new ImageIcon("Images/Button.png");
+				
+		//the font for buttons
+		Font buttonFont = new Font("Arial", Font.PLAIN, 30);
 		
 		int supplyNum = 0;
 		try
@@ -197,13 +205,25 @@ public class AddProductFrame extends JFrame implements ActionListener
 		addCBBtn.addActionListener(this);
 		addProductPanel.add(addCBBtn);
 		
-		addBtn = new JButton("Add");
+		addBtn = new JButton(buttonImage);
 		addBtn.setBounds(100, 420, 120, 33);
+		addBtn.setText("Add");
+		addBtn.setFont(buttonFont);
+		addBtn.setHorizontalTextPosition(JButton.CENTER);
+		addBtn.setVerticalTextPosition(JButton.CENTER);
+		addBtn.setContentAreaFilled(false);
+		addBtn.setBorderPainted(false);
 		addBtn.addActionListener(this);
 		addProductPanel.add(addBtn);
 		
-		cancelBtn = new JButton("Cancel");
+		cancelBtn = new JButton(buttonImage);
 		cancelBtn.setBounds(400, 420, 120, 33);
+		cancelBtn.setText("Cancel");
+		cancelBtn.setFont(buttonFont);
+		cancelBtn.setHorizontalTextPosition(JButton.CENTER);
+		cancelBtn.setVerticalTextPosition(JButton.CENTER);
+		cancelBtn.setContentAreaFilled(false);
+		cancelBtn.setBorderPainted(false);
 		cancelBtn.addActionListener(this);
 		addProductPanel.add(cancelBtn);
 		

@@ -7,9 +7,11 @@ package ui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -29,6 +31,12 @@ public class PasswordDialog extends JDialog implements ActionListener
 	
 	public PasswordDialog()
 	{
+		//the image that is needed for the buttons
+		ImageIcon buttonImage = new ImageIcon("Images/Button.png");
+				
+		//the font for buttons
+		Font buttonFont = new Font("Arial", Font.PLAIN, 30);
+		
 		this.setModal(true);
 		this.setTitle("Vertification");
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -48,13 +56,25 @@ public class PasswordDialog extends JDialog implements ActionListener
 		passField.setEchoChar('*');
 		passPanel.add(passField);
 		
-		verifyBtn = new JButton("Verify");
+		verifyBtn = new JButton(buttonImage);
 		verifyBtn.setBounds(20, 100, 70, 33);
+		verifyBtn.setText("Verify");
+		verifyBtn.setFont(buttonFont);
+		verifyBtn.setHorizontalTextPosition(JButton.CENTER);
+		verifyBtn.setVerticalTextPosition(JButton.CENTER);
+		verifyBtn.setContentAreaFilled(false);
+		verifyBtn.setBorderPainted(false);
 		verifyBtn.addActionListener(this);
 		passPanel.add(verifyBtn);
 		
-		cancelBtn = new JButton("Cancel");
+		cancelBtn = new JButton(buttonImage);
 		cancelBtn.setBounds(100, 100, 70, 33);
+		cancelBtn.setText("Cancel");
+		cancelBtn.setFont(buttonFont);
+		cancelBtn.setHorizontalTextPosition(JButton.CENTER);
+		cancelBtn.setVerticalTextPosition(JButton.CENTER);
+		cancelBtn.setContentAreaFilled(false);
+		cancelBtn.setBorderPainted(false);
 		cancelBtn.addActionListener(this);
 		passPanel.add(cancelBtn);
 		
