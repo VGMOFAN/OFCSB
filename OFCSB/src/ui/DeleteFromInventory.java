@@ -31,7 +31,7 @@ public class DeleteFromInventory extends JFrame implements ActionListener
 	
 	ProductDAO p;
 	Record r;
-	JTextField amount;
+	JTextField text, text2;
 	JButton enter, enter2;
 	JLabel title ;
 	String reason,stringDate;
@@ -59,11 +59,15 @@ public class DeleteFromInventory extends JFrame implements ActionListener
 		title.setForeground(new Color (0,0,0));
 		contentsPanel.add(title);
 		
-		amount = new JTextField();
-		amount.setText("");
-		amount.setBounds(150,125,200,30);
-		amount.setVisible(false);
-		contentsPanel.add(amount);
+		text = new JTextField();
+		text.setBounds(150,125,200,30);
+		text.setVisible(false);
+		contentsPanel.add(text);
+		
+		text2 = new JTextField();
+		text2.setBounds(150,125,200,30);
+		text2.setVisible(false);
+		contentsPanel.add(text2);
 		
 		enter= new JButton("ENTER");
 		enter.setBounds(200,200, 100, 50);
@@ -82,6 +86,7 @@ public class DeleteFromInventory extends JFrame implements ActionListener
 		Date date = new Date();
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 		stringDate = formatter.format(date);
+		System.out.println(stringDate);
 	
 		setVisible(true);
 		
@@ -132,55 +137,70 @@ public class DeleteFromInventory extends JFrame implements ActionListener
 		if(e.getSource()== enter && title.getText().compareTo("What Product:")==0)
 		{
 			item =combobox.getSelectedIndex();
+			System.out.print("" +item);
+			
 			title.setText("Reasoning:");
 			title.setBounds(165, 0, 200, 50);
-			amount.setBounds(80,70,340,150);
+			
+			text.setBounds(80,70,340,150);
+			text.setVisible(true);
+			
 			combobox.setVisible(false);
+			
 			enter2.setBounds(200,250, 100, 50);
 			enter2.setVisible(true);
 			enter.setVisible(false);
-			amount.setVisible(true);
-			reason =amount.getText();
+			
+			
+			
 			
 		}
 
 		if(e.getSource()== enter2 && title.getText().compareTo("Reasoning:")==0)
 		{
+			reason =text.getText();
+
+			System.out.print (reason);
+			
 			title.setText("How many Items?:");
 			title.setBounds(125, 0, 260, 50);
-			amount.setBounds(150,125,200,30);
-			amount.setText("");
+			
+			text2.setBounds(150,125,200,30);
+			
 			enter.setBounds(200,200, 100, 50);
 			enter2.setVisible(false);
 			enter.setVisible(true);
-			numberOfItems = Integer.parseInt(amount.getText());
+			
+			text.setVisible(false);
+			text2.setVisible(true);
+			
+			
+			
 		}
 		
-		if(e.getSource()== enter && title.getText().compareTo("How many Items?:")==0)
+		if(e.getSource()== enter && title.getText().compareTo("How many Items?:")==0 && Integer.parseInt(text2.getText())>0)
 		{
-			title.setText("Complete");
+			numberOfItems = Integer.parseInt(text2.getText());
+			System.out.print ("hi:"+ numberOfItems);
 			
+			title.setText("Complete");
 			title.setBounds(165, 125, 250, 50);
 			enter.setVisible(false);
-			amount.setVisible(false);
+			text.setVisible(false);
+			text2.setVisible(false);
 			
 			
-	try {
-		System.out.print ( ""+reason+numberOfItems);
-	} catch (Exception e2) {
-		// TODO Auto-generated catch block
-		e2.printStackTrace();
-	}
+			
+	
 				try {
-					r = new Record( p.getAllSupplies().get(item).getID(),"Delete inventory" ,stringDate,p.getAllSupplies().get(item).getName(), reason,numberOfItems);
+					r = new Record( p.getAllSupplies().get(item).getID(),"Delete Inventory" ,stringDate,p.getAllSupplies().get(item).getName(), reason,numberOfItems);
 					p.addRecord(r);
 				} catch (Exception e1) {
-					// TODO Auto-generated catch block
+					
 					e1.printStackTrace();
 				}
 				
-			
-			
+
 			
 		}
 		

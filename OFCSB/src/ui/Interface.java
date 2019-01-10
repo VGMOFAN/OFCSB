@@ -515,12 +515,16 @@ public class Interface implements ActionListener {
 		{
 			TransactionVoid tv = new TransactionVoid();
 			tv.setVisible(true);
+			
 			tv.setJTextArea(area2);
 			tv.setTransactionListCopyTV(transactionList);
+			
 			area2 = tv.getDuplicateArea();
 			tv.setJTextArea2(totalArea);
 			totalArea = tv.getNewArea();
+			
 			total = tv.getResetTotal();
+			
 			transactionList.clear();
 			System.out.print (" hi "+ transactionList+ total);
 		
@@ -545,15 +549,27 @@ public class Interface implements ActionListener {
 			
 		}
 
-		if (e.getSource() == editPrice) {
-			EditPrice ep = null;
-			ep = new EditPrice();
+		
+		ep = new EditPrice();
+		
+		if (e.getSource() == editPrice)
+		{
 			ep.setVisible(true);
+		
+			
+			
+		}
+		if (ep.display==true)
+		{
+			area2.setText(area2.getText()+ep.getEditPriceString());
+			total = ep.newTotal(total);
+			totalArea.setText("Total: $"+ ep.newTotal(total));
 		}
 
 		if (e.getSource() == deleteInventory) {
 			DeleteFromInventory dfi = new DeleteFromInventory();
 			dfi.setVisible(true);
+			
 		}
 
 		// spButton2: in menu of staff products (yellow)

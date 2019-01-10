@@ -95,10 +95,7 @@ public void actionPerformed(ActionEvent e)
 
 	if (e.getSource() == yes)
 	{
-		System.out.print ("yes");
 		determine = 1;
-	
-	
 		
 	}
 	

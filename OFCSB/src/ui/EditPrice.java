@@ -18,8 +18,10 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import core.Menu;
 import core.Record;
 import dao.ProductDAO;
 
@@ -28,12 +30,15 @@ public class EditPrice extends JFrame implements ActionListener
 {
 private JPanel contentsPanel;
 
-Record r;
+boolean display;
+String editPriceString;
 JComboBox<String> comboBox;
 JButton enter, enter2;
 JLabel title;
 String stringDate;
-JTextField amount;
+List<Menu> transactionListDuplicate = new ArrayList<>();
+JTextField amount,text2;
+JTextArea duplicateArea2;
 int item;
 double changedPrice;
 
@@ -65,6 +70,14 @@ ProductDAO p;
 			title.setFont(new Font("Georgia", Font.BOLD, 26));
 			title.setForeground(new Color (0,0,0));
 			contentsPanel.add(title);
+			
+			text2 = new JTextField();
+			text2.setText("");
+			text2.setBounds(150,125,200,30);
+			text2.setVisible(false);
+			contentsPanel.add(text2);
+			
+			display=false;
 			
 			//Enter when done putting input
 			enter= new JButton("ENTER");
@@ -108,6 +121,8 @@ contentsPanel.add(comboBox);
 			el.printStackTrace();
 		}
 		
+		
+		
 	try {
 		for (int i =0; i<p.getAllMenus().size();i++)
 		{
@@ -118,53 +133,92 @@ contentsPanel.add(comboBox);
 		e.printStackTrace();
 	}
 	
+	
+	
 	for(int i =0; i< itemNames.size();i++)
 	{
 		comboBox.addItem(itemNames.get(i));
 	}
 	
 			
-	 }
+	}
+	
+
+	
+
 	
 	public void actionPerformed(ActionEvent e)
 	{
 		if(e.getSource()== enter && title.getText().compareTo("What Product:")==0)
 		{
 			item = comboBox.getSelectedIndex();
+			comboBox.setVisible(false);
+			System.out.print("" +item);
+			
 			title.setText("Changed Price:");
 			title.setBounds(150, 0, 250, 50);
-			comboBox.setVisible(false);
+			
+		
 			enter2.setBounds(200,250, 100, 50);
 			enter2.setVisible(true);
 			enter.setVisible(false);
+			
 			amount.setVisible(true);
-			changedPrice = Double.parseDouble(amount.getText());
+		
 		}
 		
-		if(e.getSource()== enter2 && title.getText().compareTo("Changed Price:")==0)
+		if(e.getSource()== enter2 && title.getText().compareTo("Changed Price:")==0&&  Double.parseDouble(amount.getText())>0)
 		{
+			changedPrice = Double.parseDouble(amount.getText());
 			title.setText("Complete");
-			amount.setText("");
 			title.setBounds(165, 125, 250, 50);
 			enter2.setVisible(false);
 			amount.setVisible(false);
 			try {
-				p.getAllMenus().get(item).setPrice(changedPrice);
+				editPriceString = ("\n\n    ***" +  p.getAllMenus().get(item).getName()
+						+ "                                $ " + changedPrice);
+				System.out.print(editPriceString);
 			} catch (SQLException e1) {
+				
 				e1.printStackTrace();
 			}
+			
 		}
 		
+		
+		
 		try {
-			r = new Record( p.getAllMenus().get(item).getID(),"Edit Price",stringDate,p.getAllMenus().get(item).getName(), changedPrice,p.getAllMenus().get(item).getPrice());
+			Record r = new Record( p.getAllMenus().get(item).getID(),"Edit Price",stringDate,p.getAllMenus().get(item).getName(), changedPrice,p.getAllMenus().get(item).getPrice());
 			p.addRecord(r);
 		} catch (Exception e1) {
-			// TODO Auto-generated catch block
+			
 			e1.printStackTrace();
 		}
 		
-		
+		display=true;
 	}
+
+	public String getEditPriceString ()
+	{
+	
+		return editPriceString;
+	}
+	
+	
+	public double newTotal (double t)
+	{
+		double totaling;
+		totaling= t + changedPrice; 
+		return totaling;
+	}
+
+	public JButton getEnter2()
+	{
+		return enter2;
+	}
+	
+	
+
 	
 	public static void main(String[] args)
 	{
