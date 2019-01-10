@@ -39,22 +39,21 @@ public class MainPanel implements ActionListener
 		//setting for the label on the top of the main frame
 		titleLabel = new JLabel("Ottawa Family Cinema Snack Bar");
 		titleLabel.setOpaque(true);
-		titleLabel.setBounds(565, 30, 650, 100);
+		titleLabel.setBounds(610, 40, 650, 100);
 		titleLabel.setFont(new Font("Arial", Font.PLAIN, 43));
+		mainMenuPanel.add(titleLabel);
 		
 		logoImage = new JLabel (new ImageIcon("Images/logo.png"));
-		logoImage.setBounds(1300, -30, 500, 300);
+		logoImage.setBounds(740, 80, 400, 300);
 		mainMenuPanel.add(logoImage);
 		
 		blueborder = new JLabel (new ImageIcon("Images/blue border.png"));
 		blueborder.setBounds(10, 10, 1800, 1000);
 		mainMenuPanel.add(blueborder);
 		
-		mainMenuPanel.add(titleLabel);
-		
 		//jump to cash system if this button is clicked
 		cashBtn = new JButton(buttonImage);
-		cashBtn.setBounds(700, 350, 300, 100);
+		cashBtn.setBounds(800, 500, 280, 82);
 		cashBtn.setText("Cash System");
 		cashBtn.setFont(buttonFont);
 		cashBtn.setHorizontalTextPosition(JButton.CENTER);
@@ -66,7 +65,7 @@ public class MainPanel implements ActionListener
 		
 		//jump to inventory system if this button is clicked
 		inventoryBtn = new JButton(buttonImage);
-		inventoryBtn.setBounds(700, 500, 300, 100);
+		inventoryBtn.setBounds(800, 650, 280, 82);
 		inventoryBtn.setText("Inventory System");
 		inventoryBtn.setFont(buttonFont);
 		inventoryBtn.setHorizontalTextPosition(JButton.CENTER);
