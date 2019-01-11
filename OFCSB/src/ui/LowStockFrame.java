@@ -45,6 +45,8 @@ public class LowStockFrame extends JFrame implements ActionListener
 		//the font for buttons
 		Font buttonFont = new Font("Arial", Font.PLAIN, 30);
 		
+		Font headerFont = new Font("Arial", Font.BOLD, 30);
+		
 		DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
 		dtcr.setHorizontalTextPosition(DefaultTableCellRenderer.CENTER);
 		
@@ -72,6 +74,9 @@ public class LowStockFrame extends JFrame implements ActionListener
 		{
 			supplyTable.getColumnModel().getColumn(i).setCellRenderer(dtcr);
 		}
+		supplyTable.setFont(buttonFont);
+		supplyTable.getTableHeader().setFont(headerFont);
+		supplyTable.setRowHeight(60);
 		
 		JTable otherTable = new JTable();
 		try
@@ -88,6 +93,9 @@ public class LowStockFrame extends JFrame implements ActionListener
 		{
 			otherTable.getColumnModel().getColumn(i).setCellRenderer(dtcr);
 		}
+		otherTable.setFont(buttonFont);
+		otherTable.getTableHeader().setFont(headerFont);
+		otherTable.setRowHeight(60);
 		
 		supplyPane = new JScrollPane();
 		supplyPane.setBounds(10, 10, 500, 150);

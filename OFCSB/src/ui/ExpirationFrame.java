@@ -47,6 +47,8 @@ public class ExpirationFrame extends JFrame implements ActionListener
 		//the font for buttons
 		Font buttonFont = new Font("Arial", Font.PLAIN, 30);
 		
+		Font headerFont = new Font("Arial", Font.BOLD, 30);
+		
 		//a table cell renderer in order to display table values at the center of the cell
 		dtcr = new DefaultTableCellRenderer();
 		dtcr.setHorizontalTextPosition(DefaultTableCellRenderer.CENTER);
@@ -78,6 +80,9 @@ public class ExpirationFrame extends JFrame implements ActionListener
 		{
 			supplyTable.getColumnModel().getColumn(i).setCellRenderer(dtcr);
 		}
+		supplyTable.setFont(buttonFont);
+		supplyTable.getTableHeader().setFont(headerFont);
+		supplyTable.setRowHeight(60);
 		
 		//
 		expirationPane = new JScrollPane();
@@ -86,7 +91,7 @@ public class ExpirationFrame extends JFrame implements ActionListener
 		expirationPanel.add(expirationPane);
 		
 		deleteBtn = new JButton(buttonImage);
-		deleteBtn.setBounds(150, 440, 120, 33);
+		deleteBtn.setBounds(150, 440, 280, 82);
 		deleteBtn.setText("Delete");
 		deleteBtn.setFont(buttonFont);
 		deleteBtn.setHorizontalTextPosition(JButton.CENTER);
@@ -97,7 +102,7 @@ public class ExpirationFrame extends JFrame implements ActionListener
 		expirationPanel.add(deleteBtn);
 		
 		okBtn = new JButton(buttonImage);
-		okBtn.setBounds(300, 440, 120, 33);
+		okBtn.setBounds(300, 440, 280, 82);
 		okBtn.setText("OK");
 		okBtn.setFont(buttonFont);
 		okBtn.setHorizontalTextPosition(JButton.CENTER);

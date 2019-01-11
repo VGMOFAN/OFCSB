@@ -57,6 +57,8 @@ public class InventoryPanel implements ActionListener
 		//the font for buttons
 		Font buttonFont = new Font("Arial", Font.PLAIN, 30);
 		
+		Font headerFont = new Font("Arial", Font.BOLD, 30);
+		
 		//setting for inventory panel
 		inventoryPanel = new JPanel();
 		inventoryPanel.setLayout(null);
@@ -85,6 +87,8 @@ public class InventoryPanel implements ActionListener
 			supplyTable.getColumnModel().getColumn(i).setCellRenderer(dtcr);
 		}
 		supplyTable.setFont(buttonFont);
+		supplyTable.getTableHeader().setFont(headerFont);
+		supplyTable.setRowHeight(60);
 		
 		menuTable = new JTable();
 		try
@@ -101,6 +105,9 @@ public class InventoryPanel implements ActionListener
 		{
 			menuTable.getColumnModel().getColumn(i).setCellRenderer(dtcr);
 		}
+		menuTable.setFont(buttonFont);
+		menuTable.getTableHeader().setFont(headerFont);
+		menuTable.setRowHeight(60);
 		
 		otherTable = new JTable();
 		try
@@ -114,6 +121,8 @@ public class InventoryPanel implements ActionListener
 			JOptionPane.showMessageDialog(MainFrame.overallFrame, "Error creating table: " + e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 		}
 		otherTable.setFont(buttonFont);
+		otherTable.getTableHeader().setFont(headerFont);
+		otherTable.setRowHeight(60);
 		
 		//a scroll pane with a list of supplies
 		supplyPane = new JScrollPane();

@@ -52,6 +52,8 @@ public class RecordFrame extends JFrame implements ActionListener
 		//the font for buttons
 		Font buttonFont = new Font("Arial", Font.PLAIN, 30);
 		
+		Font headerFont = new Font("Arial", Font.BOLD, 30);
+		
 		dtcr = new DefaultTableCellRenderer();
 		dtcr.setHorizontalTextPosition(DefaultTableCellRenderer.CENTER);
 		
@@ -88,6 +90,9 @@ public class RecordFrame extends JFrame implements ActionListener
 		{
 			editPriceTable.getColumnModel().getColumn(i).setCellRenderer(dtcr);
 		}
+		editPriceTable.setFont(buttonFont);
+		editPriceTable.getTableHeader().setFont(headerFont);
+		editPriceTable.setRowHeight(60);
 		
 		deleteInventoryTable = new JTable();
 		try
@@ -108,6 +113,9 @@ public class RecordFrame extends JFrame implements ActionListener
 		{
 			deleteInventoryTable.getColumnModel().getColumn(i).setCellRenderer(dtcr);
 		}
+		deleteInventoryTable.setFont(buttonFont);
+		deleteInventoryTable.getTableHeader().setFont(headerFont);
+		deleteInventoryTable.setRowHeight(60);
 		
 		debitTransTable = new JTable();
 		try
@@ -128,6 +136,9 @@ public class RecordFrame extends JFrame implements ActionListener
 		{
 			debitTransTable.getColumnModel().getColumn(i).setCellRenderer(dtcr);
 		}
+		debitTransTable.setFont(buttonFont);
+		debitTransTable.getTableHeader().setFont(headerFont);
+		debitTransTable.setRowHeight(60);
 		
 		editPricePane = new JScrollPane();
 		editPricePane.setViewportView(editPriceTable);
