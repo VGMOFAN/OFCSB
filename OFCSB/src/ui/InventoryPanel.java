@@ -65,7 +65,7 @@ public class InventoryPanel implements ActionListener
 		
 		switchPanel = new JPanel();
 		switchPanel.setLayout(new CardLayout());
-		switchPanel.setBounds(10, 120, 1450, 750);
+		switchPanel.setBounds(10, 120, 1450, 700);
 		inventoryPanel.add(switchPanel);
 		
 		dtcr = new DefaultTableCellRenderer();
@@ -144,7 +144,7 @@ public class InventoryPanel implements ActionListener
 		inventoryPanel.add(searchTF);
 		
 		supplyBtn = new JButton(buttonImage);
-		supplyBtn.setBounds(300, 880, 280, 82);
+		supplyBtn.setBounds(300, 840, 280, 82);
 		supplyBtn.setText("Supply");
 		supplyBtn.setFont(buttonFont);
 		supplyBtn.setHorizontalTextPosition(JButton.CENTER);
@@ -155,7 +155,7 @@ public class InventoryPanel implements ActionListener
 		inventoryPanel.add(supplyBtn);
 		
 		menuBtn = new JButton(buttonImage);
-		menuBtn.setBounds(600, 880, 280, 82);
+		menuBtn.setBounds(600, 840, 280, 82);
 		menuBtn.setText("Menu");
 		menuBtn.setFont(buttonFont);
 		menuBtn.setHorizontalTextPosition(JButton.CENTER);
@@ -166,7 +166,7 @@ public class InventoryPanel implements ActionListener
 		inventoryPanel.add(menuBtn);
 		
 		otherBtn = new JButton(buttonImage);
-		otherBtn.setBounds(900, 880, 280, 82);
+		otherBtn.setBounds(900, 840, 280, 82);
 		otherBtn.setText("Other");
 		otherBtn.setFont(buttonFont);
 		otherBtn.setHorizontalTextPosition(JButton.CENTER);

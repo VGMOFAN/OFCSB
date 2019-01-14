@@ -84,7 +84,7 @@ public class AddProductFrame extends JFrame implements ActionListener
 		
 		addProductFrame = new JFrame("Add Product");
 		addProductFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		addProductFrame.setPreferredSize(new Dimension(650,500));
+		addProductFrame.setPreferredSize(new Dimension(1000, 900));
 		addProductFrame.setLayout(new BorderLayout());
 		addProductFrame.setResizable(false);
 		
@@ -93,69 +93,83 @@ public class AddProductFrame extends JFrame implements ActionListener
 		
 		comboPanel = new JPanel();
 		comboPanel.setLayout(new GridLayout(3, 3, 5, 5));
-		comboPanel.setBounds(150, 270, 450, 90);
+		comboPanel.setBounds(350, 500, 600, 200);
 		for(int i = 0; i < materialCB.length; i++)
 		{
 			materialCB[i] = new JComboBox<String>(supplyList);
+			materialCB[i].setFont(buttonFont);
 			materialCB[i].setVisible(false);
 			comboPanel.add(materialCB[i]);
 		}
 		addProductPanel.add(comboPanel);
 		
 		nameLabel = new JLabel("Name:");
-		nameLabel.setBounds(20, 20, 100, 33);
+		nameLabel.setBounds(20, 20, 300, 50);
+		nameLabel.setFont(buttonFont);
 		addProductPanel.add(nameLabel);
 		
 		typeLabel = new JLabel("Type:");
-		typeLabel.setBounds(20, 60, 100, 33);
+		typeLabel.setBounds(20, 100, 300, 50);
+		typeLabel.setFont(buttonFont);
 		addProductPanel.add(typeLabel);
 		
 		categoryLabel = new JLabel("Category:");
-		categoryLabel.setBounds(20, 100, 100, 33);
+		categoryLabel.setBounds(20, 180, 300, 50);
+		categoryLabel.setFont(buttonFont);
 		addProductPanel.add(categoryLabel);
 		
 		priceLabel = new JLabel("Price:");
-		priceLabel.setBounds(20, 140, 100, 33);
+		priceLabel.setBounds(20, 260, 300, 50);
+		priceLabel.setFont(buttonFont);
 		addProductPanel.add(priceLabel);
 		
 		emPriceLabel = new JLabel("Employee Price:");
-		emPriceLabel.setBounds(20, 180, 100, 33);
+		emPriceLabel.setBounds(20, 340, 300, 50);
+		emPriceLabel.setFont(buttonFont);
 		addProductPanel.add(emPriceLabel);
 		
 		lowStockLabel = new JLabel("Low-Stock:");
-		lowStockLabel.setBounds(20, 220, 100, 33);
+		lowStockLabel.setBounds(20, 420, 300, 50);
+		lowStockLabel.setFont(buttonFont);
 		addProductPanel.add(lowStockLabel);
 		
 		materialLabel = new JLabel("Materials:");
-		materialLabel.setBounds(20, 260, 100, 33);
+		materialLabel.setBounds(20, 500, 300, 50);
+		materialLabel.setFont(buttonFont);
 		addProductPanel.add(materialLabel);
 		
 		nameTF = new JTextField();
-		nameTF.setBounds(150, 20, 150, 33);
+		nameTF.setBounds(350, 20, 300, 50);
+		nameTF.setFont(buttonFont);
 		addProductPanel.add(nameTF);
 		
 		priceTF = new JTextField("0");
-		priceTF.setBounds(150, 140, 150, 33);
+		priceTF.setBounds(350, 260, 300, 50);
+		priceTF.setFont(buttonFont);
 		addProductPanel.add(priceTF);
 		
 		emPriceTF = new JTextField("0");
-		emPriceTF.setBounds(150, 180, 150, 33);
+		emPriceTF.setBounds(350, 340, 300, 50);
+		emPriceTF.setFont(buttonFont);
 		addProductPanel.add(emPriceTF);
 		
 		lowStockTF = new JTextField("0");
-		lowStockTF.setBounds(150, 220, 150, 33);
+		lowStockTF.setBounds(350, 420, 300, 50);
+		lowStockTF.setFont(buttonFont);
 		addProductPanel.add(lowStockTF);
 
 		String[] categoryList = {"", "Candy", "Popcorn", "Small drink", "Large drink", "Hotdog"};
 		categoryCB = new JComboBox<String>(categoryList);
 		categoryCB.setSelectedIndex(0);
-		categoryCB.setBounds(150, 100, 150, 33);
+		categoryCB.setBounds(350, 180, 300, 50);
+		categoryCB.setFont(buttonFont);
 		addProductPanel.add(categoryCB);
 		
 		String[] typeList = {"", "Supply", "Menu", "Other"};
 		typeCB = new JComboBox<String>(typeList);
 		typeCB.setSelectedIndex(0);
-		typeCB.setBounds(150, 60, 150, 33);
+		typeCB.setBounds(350, 100, 300, 50);
+		typeCB.setFont(buttonFont);
 		typeCB.addActionListener(new ActionListener()
 				{
 					@SuppressWarnings("unchecked")
@@ -175,6 +189,10 @@ public class AddProductFrame extends JFrame implements ActionListener
 				        	setDisabled(addCBBtn);
 				        	setDisabled(comboPanel);
 				        	setDisabled(categoryCB);
+				        	for(int i = 0; i < materialCB.length; i++)
+				    		{
+				    			setDisabled(materialCB[i]);
+				    		}
 				        	setEnabled(lowStockTF);
 				        	break;
 				        case "Menu":
@@ -184,6 +202,10 @@ public class AddProductFrame extends JFrame implements ActionListener
 				        	setEnabled(addCBBtn);
 				        	setEnabled(comboPanel);
 				        	setEnabled(categoryCB);
+				        	for(int i = 0; i < materialCB.length; i++)
+				    		{
+				    			setEnabled(materialCB[i]);
+				    		}
 				        	setDisabled(lowStockTF);
 				        	break;
 				        case "Other":
@@ -193,6 +215,10 @@ public class AddProductFrame extends JFrame implements ActionListener
 				        	setDisabled(addCBBtn);
 				        	setDisabled(comboPanel);
 				        	setDisabled(categoryCB);
+				        	for(int i = 0; i < materialCB.length; i++)
+				    		{
+				    			setEnabled(materialCB[i]);
+				    		}
 				        	setEnabled(lowStockTF);
 				        	break;
 				        }
@@ -201,12 +227,12 @@ public class AddProductFrame extends JFrame implements ActionListener
 		addProductPanel.add(typeCB);
 		
 		addCBBtn = new JButton();
-		addCBBtn.setBounds(110, 270, 33, 33);
+		addCBBtn.setBounds(200, 500, 50, 50);
 		addCBBtn.addActionListener(this);
 		addProductPanel.add(addCBBtn);
 		
 		addBtn = new JButton(buttonImage);
-		addBtn.setBounds(100, 420, 120, 33);
+		addBtn.setBounds(100, 750, 280, 82);
 		addBtn.setText("Add");
 		addBtn.setFont(buttonFont);
 		addBtn.setHorizontalTextPosition(JButton.CENTER);
@@ -217,7 +243,7 @@ public class AddProductFrame extends JFrame implements ActionListener
 		addProductPanel.add(addBtn);
 		
 		cancelBtn = new JButton(buttonImage);
-		cancelBtn.setBounds(400, 420, 120, 33);
+		cancelBtn.setBounds(400, 750, 280, 82);
 		cancelBtn.setText("Cancel");
 		cancelBtn.setFont(buttonFont);
 		cancelBtn.setHorizontalTextPosition(JButton.CENTER);

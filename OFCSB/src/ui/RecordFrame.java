@@ -59,7 +59,7 @@ public class RecordFrame extends JFrame implements ActionListener
 		
 		recordFrame = new JFrame("Records");
 		recordFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		recordFrame.setPreferredSize(new Dimension(650,500));
+		recordFrame.setPreferredSize(new Dimension(1500,1000));
 		recordFrame.setLayout(new BorderLayout());
 		recordFrame.setResizable(false);
 		
@@ -68,7 +68,7 @@ public class RecordFrame extends JFrame implements ActionListener
 		
 		switchPanel = new JPanel();
 		switchPanel.setLayout(new CardLayout());
-		switchPanel.setBounds(10, 20, 500, 350);
+		switchPanel.setBounds(10, 20, 1200, 700);
 		recordPanel.add(switchPanel);
 		
 		editPriceTable = new JTable();
@@ -153,7 +153,7 @@ public class RecordFrame extends JFrame implements ActionListener
 		switchPanel.add(debitTransPane, "Debit Transaction");
 		
 		editPriceBtn = new JButton(buttonImage);
-		editPriceBtn.setBounds(70, 440, 150, 33);
+		editPriceBtn.setBounds(20, 850, 280, 82);
 		editPriceBtn.setText("Edited price");
 		editPriceBtn.setFont(buttonFont);
 		editPriceBtn.setHorizontalTextPosition(JButton.CENTER);
@@ -164,7 +164,7 @@ public class RecordFrame extends JFrame implements ActionListener
 		recordPanel.add(editPriceBtn);
 		
 		deleteInventoryBtn = new JButton(buttonImage);
-		deleteInventoryBtn.setBounds(230, 440, 150, 33);
+		deleteInventoryBtn.setBounds(320, 850, 280, 82);
 		deleteInventoryBtn.setText("Deleted inventory");
 		deleteInventoryBtn.setFont(buttonFont);
 		deleteInventoryBtn.setHorizontalTextPosition(JButton.CENTER);
@@ -175,7 +175,7 @@ public class RecordFrame extends JFrame implements ActionListener
 		recordPanel.add(deleteInventoryBtn);
 		
 		debitTransBtn = new JButton(buttonImage);
-		debitTransBtn.setBounds(400, 440, 150, 33);
+		debitTransBtn.setBounds(620, 850, 280, 82);
 		debitTransBtn.setText("Debit Transaction");
 		debitTransBtn.setFont(buttonFont);
 		debitTransBtn.setHorizontalTextPosition(JButton.CENTER);
@@ -186,7 +186,7 @@ public class RecordFrame extends JFrame implements ActionListener
 		recordPanel.add(debitTransBtn);
 		
 		deleteBtn = new JButton(buttonImage);
-		deleteBtn.setBounds(550, 70, 120 ,33);
+		deleteBtn.setBounds(1210, 100, 280, 82);
 		deleteBtn.setText("Delete record");
 		deleteBtn.setFont(buttonFont);
 		deleteBtn.setHorizontalTextPosition(JButton.CENTER);
@@ -197,7 +197,7 @@ public class RecordFrame extends JFrame implements ActionListener
 		recordPanel.add(deleteBtn);
 		
 		clearBtn = new JButton(buttonImage);
-		clearBtn.setBounds(550, 150, 120 ,33);
+		clearBtn.setBounds(1210, 200, 280, 82);
 		clearBtn.setText("Clear all");
 		clearBtn.setFont(buttonFont);
 		clearBtn.setHorizontalTextPosition(JButton.CENTER);
@@ -208,7 +208,7 @@ public class RecordFrame extends JFrame implements ActionListener
 		recordPanel.add(clearBtn);
 		
 		okBtn = new JButton(buttonImage);
-		okBtn.setBounds(550, 250, 120 ,33);
+		okBtn.setBounds(1210, 300, 280, 82);
 		okBtn.setText("OK");
 		okBtn.setFont(buttonFont);
 		okBtn.setHorizontalTextPosition(JButton.CENTER);
@@ -228,7 +228,8 @@ public class RecordFrame extends JFrame implements ActionListener
 		totalLabel = new JLabel();
 		totalLabel.setText("Total: $" + total);
 		totalLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-		totalLabel.setBounds(100, 380, 300, 33);
+		totalLabel.setBounds(800, 750, 300, 50);
+		totalLabel.setFont(buttonFont);
 		recordPanel.add(totalLabel);
 		
 		recordFrame.add(recordPanel);
@@ -402,6 +403,14 @@ public class RecordFrame extends JFrame implements ActionListener
 			{
 				debitTransTable.getColumnModel().getColumn(i).setCellRenderer(dtcr);
 			}
+			
+			total = 0;
+			for(int i = 0; i < editPriceTable.getRowCount(); i++)
+			{
+		        double amount = Double.parseDouble(editPriceTable.getValueAt(i, 4) + "");
+		        total = amount + total;
+			}
+			totalLabel.setText("Total: $" + total);
 		}
 		catch(Exception e1)
 		{

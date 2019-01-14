@@ -52,7 +52,7 @@ public class LowStockFrame extends JFrame implements ActionListener
 		
 		lowStockFrame = new JFrame("Low-stocks");
 		lowStockFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		lowStockFrame.setPreferredSize(new Dimension(650,500));
+		lowStockFrame.setPreferredSize(new Dimension(1000, 800));
 		lowStockFrame.setLayout(new BorderLayout());
 		lowStockFrame.setResizable(false);
 		
@@ -98,17 +98,17 @@ public class LowStockFrame extends JFrame implements ActionListener
 		otherTable.setRowHeight(60);
 		
 		supplyPane = new JScrollPane();
-		supplyPane.setBounds(10, 10, 500, 150);
+		supplyPane.setBounds(10, 10, 980, 300);
 		supplyPane.setViewportView(supplyTable);
 		lowStockPanel.add(supplyPane);
 		
 		otherPane = new JScrollPane();
-		otherPane.setBounds(10, 170, 500, 150);
+		otherPane.setBounds(10, 320, 980, 300);
 		otherPane.setViewportView(otherTable);
 		lowStockPanel.add(otherPane);
 		
 		okBtn = new JButton(buttonImage);
-		okBtn.setBounds(250, 440, 120, 33);
+		okBtn.setBounds(360, 650, 280, 82);
 		okBtn.setText("OK");
 		okBtn.setFont(buttonFont);
 		okBtn.setHorizontalTextPosition(JButton.CENTER);

@@ -56,7 +56,7 @@ public class ExpirationFrame extends JFrame implements ActionListener
 		//settings for this frame
 		expirationFrame = new JFrame("Expirations");
 		expirationFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		expirationFrame.setPreferredSize(new Dimension(650,500));
+		expirationFrame.setPreferredSize(new Dimension(1000,800));
 		expirationFrame.setLayout(new BorderLayout());
 		expirationFrame.setResizable(false);
 		
@@ -86,12 +86,12 @@ public class ExpirationFrame extends JFrame implements ActionListener
 		
 		//
 		expirationPane = new JScrollPane();
-		expirationPane.setBounds(10, 10, 500, 400);
+		expirationPane.setBounds(10, 10, 980, 600);
 		expirationPane.setViewportView(supplyTable);
 		expirationPanel.add(expirationPane);
 		
 		deleteBtn = new JButton(buttonImage);
-		deleteBtn.setBounds(150, 440, 280, 82);
+		deleteBtn.setBounds(150, 650, 280, 82);
 		deleteBtn.setText("Delete");
 		deleteBtn.setFont(buttonFont);
 		deleteBtn.setHorizontalTextPosition(JButton.CENTER);
@@ -102,7 +102,7 @@ public class ExpirationFrame extends JFrame implements ActionListener
 		expirationPanel.add(deleteBtn);
 		
 		okBtn = new JButton(buttonImage);
-		okBtn.setBounds(300, 440, 280, 82);
+		okBtn.setBounds(500, 650, 280, 82);
 		okBtn.setText("OK");
 		okBtn.setFont(buttonFont);
 		okBtn.setHorizontalTextPosition(JButton.CENTER);

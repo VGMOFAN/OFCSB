@@ -40,7 +40,7 @@ public class PasswordDialog extends JDialog implements ActionListener
 		this.setModal(true);
 		this.setTitle("Vertification");
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		this.setPreferredSize(new Dimension(300, 200));
+		this.setPreferredSize(new Dimension(800, 400));
 		this.setLayout(new BorderLayout());
 		this.setResizable(false);
 		
@@ -48,16 +48,18 @@ public class PasswordDialog extends JDialog implements ActionListener
 		passPanel.setLayout(null);
 		
 		label = new JLabel("Password:");
-		label.setBounds(0, 20, 70, 33);
+		label.setBounds(90, 20, 200, 82);
+		label.setFont(buttonFont);
 		passPanel.add(label);
 		
 		passField = new JPasswordField(10);
-		passField.setBounds(80, 20, 100, 33);
+		passField.setBounds(300, 20, 400, 82);
+		passField.setFont(buttonFont);
 		passField.setEchoChar('*');
 		passPanel.add(passField);
 		
 		verifyBtn = new JButton(buttonImage);
-		verifyBtn.setBounds(20, 100, 70, 33);
+		verifyBtn.setBounds(20, 200, 280, 82);
 		verifyBtn.setText("Verify");
 		verifyBtn.setFont(buttonFont);
 		verifyBtn.setHorizontalTextPosition(JButton.CENTER);
@@ -68,7 +70,7 @@ public class PasswordDialog extends JDialog implements ActionListener
 		passPanel.add(verifyBtn);
 		
 		cancelBtn = new JButton(buttonImage);
-		cancelBtn.setBounds(100, 100, 70, 33);
+		cancelBtn.setBounds(400, 200, 280, 82);
 		cancelBtn.setText("Cancel");
 		cancelBtn.setFont(buttonFont);
 		cancelBtn.setHorizontalTextPosition(JButton.CENTER);

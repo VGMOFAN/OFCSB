@@ -54,7 +54,7 @@ public class AddInventoryFrame extends JFrame implements ActionListener
 		
 		addInventoryFrame = new JFrame("Add Inventory");
 		addInventoryFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		addInventoryFrame.setPreferredSize(new Dimension(650,500));
+		addInventoryFrame.setPreferredSize(new Dimension(1500,600));
 		addInventoryFrame.setLayout(new BorderLayout());
 		addInventoryFrame.setResizable(false);
 		
@@ -62,11 +62,13 @@ public class AddInventoryFrame extends JFrame implements ActionListener
 		addInventoryPanel.setLayout(null);
 		
 		nameLabel = new JLabel("Product Name:");
-		nameLabel.setBounds(20, 20, 100, 33);
+		nameLabel.setBounds(20, 20, 200, 50);
+		nameLabel.setFont(buttonFont);
 		addInventoryPanel.add(nameLabel);
 		
 		actualNameLabel = new JLabel();
-		actualNameLabel.setBounds(200, 20, 100, 33);
+		actualNameLabel.setBounds(250, 20, 200, 50);
+		actualNameLabel.setFont(buttonFont);
 		if(other == null)
 		{
 			actualNameLabel.setText(supply.getName());
@@ -78,53 +80,65 @@ public class AddInventoryFrame extends JFrame implements ActionListener
 		addInventoryPanel.add(actualNameLabel);
 		
 		scaleLabel = new JLabel("Large Unit : Small Unit");
-		scaleLabel.setBounds(20, 70, 140, 33);
+		scaleLabel.setBounds(20, 100, 300, 50);
+		scaleLabel.setFont(buttonFont);
 		addInventoryPanel.add(scaleLabel);
 		
 		colonLabel = new JLabel(":");
-		colonLabel.setBounds(265, 70, 5, 33);
+		colonLabel.setBounds(460, 100, 10, 50);
+		colonLabel.setFont(buttonFont);
 		addInventoryPanel.add(colonLabel);
 		
 		amountLabel = new JLabel("Amount");
-		amountLabel.setBounds(20, 120, 100, 33);
+		amountLabel.setBounds(20, 200, 200, 50);
+		amountLabel.setFont(buttonFont);
 		addInventoryPanel.add(amountLabel);
 		
 		exDateLabel = new JLabel("Expiration Date");
-		exDateLabel.setBounds(20, 170, 100, 33);
+		exDateLabel.setBounds(20, 300, 250, 50);
+		exDateLabel.setFont(buttonFont);
 		addInventoryPanel.add(exDateLabel);
 		
 		slash1Label = new JLabel("/");
-		slash1Label.setBounds(282, 170, 10, 33);
+		slash1Label.setBounds(430, 300, 10, 50);
+		slash1Label.setFont(buttonFont);
 		addInventoryPanel.add(slash1Label);
 		
 		slash2Label = new JLabel("/");
-		slash2Label.setBounds(333, 170, 10, 33);
+		slash2Label.setBounds(510, 300, 10, 50);
+		slash2Label.setFont(buttonFont);
 		addInventoryPanel.add(slash2Label);
 		
 		largeUnitLabel = new JLabel("1");
-		largeUnitLabel.setBounds(200, 70, 60, 33);
+		largeUnitLabel.setBounds(400, 100, 60, 50);
+		largeUnitLabel.setFont(buttonFont);
 		addInventoryPanel.add(largeUnitLabel);
 		
 		smallUnitTF = new JTextField("1");
-		smallUnitTF.setBounds(271, 70, 60, 33);
+		smallUnitTF.setBounds(480, 100, 60, 50);
+		smallUnitTF.setFont(buttonFont);
 		addInventoryPanel.add(smallUnitTF);
 		
 		amountTF = new JTextField("0");
-		amountTF.setBounds(200, 120, 60, 33);
+		amountTF.setBounds(200, 200, 60, 50);
+		amountTF.setFont(buttonFont);
 		addInventoryPanel.add(amountTF);
 		
 		yearTF = new JTextField();
-		yearTF.setBounds(200, 170, 80, 33);
+		yearTF.setBounds(300, 300, 120, 50);
+		yearTF.setFont(buttonFont);
 		yearTF.setHorizontalAlignment(SwingConstants.RIGHT);
 		addInventoryPanel.add(yearTF);
 		
 		monthTF = new JTextField();
-		monthTF.setBounds(290, 170, 40, 33);
+		monthTF.setBounds(440, 300, 60, 50);
+		monthTF.setFont(buttonFont);
 		monthTF.setHorizontalAlignment(SwingConstants.RIGHT);
 		addInventoryPanel.add(monthTF);
 		
 		dayTF = new JTextField();
-		dayTF.setBounds(340, 170, 40, 33);
+		dayTF.setBounds(520, 300, 60, 50);
+		dayTF.setFont(buttonFont);
 		dayTF.setHorizontalAlignment(SwingConstants.RIGHT);
 		addInventoryPanel.add(dayTF);
 		
@@ -136,7 +150,7 @@ public class AddInventoryFrame extends JFrame implements ActionListener
 		}
 		
 		add12Btn = new JButton(buttonImage);
-		add12Btn.setBounds(280, 120, 60, 33);
+		add12Btn.setBounds(280, 180, 280, 82);
 		add12Btn.setText("+12");
 		add12Btn.setFont(buttonFont);
 		add12Btn.setHorizontalTextPosition(JButton.CENTER);
@@ -147,7 +161,7 @@ public class AddInventoryFrame extends JFrame implements ActionListener
 		addInventoryPanel.add(add12Btn);
 		
 		add16Btn = new JButton(buttonImage);
-		add16Btn.setBounds(360, 120, 60, 33);
+		add16Btn.setBounds(580, 180, 280, 82);
 		add16Btn.setText("+16");
 		add16Btn.setFont(buttonFont);
 		add16Btn.setHorizontalTextPosition(JButton.CENTER);
@@ -158,7 +172,7 @@ public class AddInventoryFrame extends JFrame implements ActionListener
 		addInventoryPanel.add(add16Btn);
 		
 		add24Btn = new JButton(buttonImage);
-		add24Btn.setBounds(440, 120, 60, 33);
+		add24Btn.setBounds(880, 180, 280, 82);
 		add24Btn.setText("+24");
 		add24Btn.setFont(buttonFont);
 		add24Btn.setHorizontalTextPosition(JButton.CENTER);
@@ -169,7 +183,7 @@ public class AddInventoryFrame extends JFrame implements ActionListener
 		addInventoryPanel.add(add24Btn);
 		
 		add25Btn = new JButton(buttonImage);
-		add25Btn.setBounds(520, 120, 60, 33);
+		add25Btn.setBounds(1180, 180, 280, 82);
 		add25Btn.setText("+25");
 		add25Btn.setFont(buttonFont);
 		add25Btn.setHorizontalTextPosition(JButton.CENTER);
@@ -180,7 +194,7 @@ public class AddInventoryFrame extends JFrame implements ActionListener
 		addInventoryPanel.add(add25Btn);
 		
 		addBtn = new JButton(buttonImage);
-		addBtn.setBounds(100, 400, 120, 33);
+		addBtn.setBounds(400, 400, 280, 82);
 		addBtn.setText("Add");
 		addBtn.setFont(buttonFont);
 		addBtn.setHorizontalTextPosition(JButton.CENTER);
@@ -191,7 +205,7 @@ public class AddInventoryFrame extends JFrame implements ActionListener
 		addInventoryPanel.add(addBtn);
 		
 		cancelBtn = new JButton(buttonImage);
-		cancelBtn.setBounds(400, 400, 120, 33);
+		cancelBtn.setBounds(820, 400, 280, 82);
 		cancelBtn.setText("Cancel");
 		cancelBtn.setFont(buttonFont);
 		cancelBtn.setHorizontalTextPosition(JButton.CENTER);
