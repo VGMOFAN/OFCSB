@@ -178,6 +178,8 @@ public class InventoryPanel implements ActionListener
 		
 		homeBtn = new JButton(new ImageIcon("Images/homebutton.png"));
 		homeBtn.setBounds(1500, 20, 50, 50);
+		homeBtn.setContentAreaFilled(false);
+		homeBtn.setBorderPainted(false);
 		homeBtn.addActionListener(this);
 		inventoryPanel.add(homeBtn);
 		

@@ -226,8 +226,9 @@ public class AddProductFrame extends JFrame implements ActionListener
 				});
 		addProductPanel.add(typeCB);
 		
-		addCBBtn = new JButton();
-		addCBBtn.setBounds(200, 500, 50, 50);
+		addCBBtn = new JButton("+");
+		addCBBtn.setBounds(200, 500, 60, 60);
+		addCBBtn.setFont(new Font("Arial", Font.BOLD, 30));
 		addCBBtn.addActionListener(this);
 		addProductPanel.add(addCBBtn);
 		
