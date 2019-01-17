@@ -6,7 +6,9 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.swing.ImageIcon;
@@ -17,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import core.Menu;
+import core.Record;
 import dao.ProductDAO;
 
 
@@ -31,6 +34,12 @@ double debitTotal, changeNumber;
 JLabel title, dollarSign, change;
 List<Menu> transactionListCopy = new ArrayList<>();
 JTextField amount;
+
+private Record r;
+
+private String stringDate;
+
+private String date;
 
 	public Total()
 	 {
@@ -103,6 +112,10 @@ JTextField amount;
 		change.setVisible(false);
 		change.setFont(new Font("Georgia", Font.BOLD, 26));
 		contentsPanel.add(change);
+		
+		Date date = new Date();
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		stringDate = formatter.format(date);
 		
 		try {
 			p = new ProductDAO();
@@ -190,16 +203,19 @@ JTextField amount;
 			title.setBounds(100,100, 300, 100);
 			System.out.print(clear);
 
-			
+			int transnumber;
+			transnumber++;
 			
 			for (int i = 0; i < transactionListCopy.size(); i++) 
 			{
 				try {
-					p.decreaseInventory(transactionListCopy.get(i));
-				} catch (SQLException e1) {
-				
+					r = new Record( transactionListCopy.get(i).getID(), "Debit Tranaction", date, debitTotal, transnumber);
+					p.addRecord(r);
+				} catch (Exception e1) {
+					
 					e1.printStackTrace();
 				}
+				
 				transactionListCopy.get(i).setSold(transactionListCopy.get(i).getSold()+1);
 				
 			}

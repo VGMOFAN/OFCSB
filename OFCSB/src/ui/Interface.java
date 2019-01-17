@@ -51,6 +51,7 @@ public class Interface implements ActionListener {
 	Menu[] smdrinks, lgdrinks, hotdogs, popcorn, candy;
 	private JButton[] smallDrinkButtons, largeDrinkButtons, hotdogButtons,
 			popcornButtons, candyButtons;
+	private EditPrice ep;
 
 	public Interface() {
 		// Components of JFrame mainMenu
@@ -247,6 +248,8 @@ public class Interface implements ActionListener {
 		totalArea.setFont(ff);
 		totalArea.setEditable(false);
 		border.add(totalArea);
+		
+	
 
 		// dummy small drinks
 
@@ -258,7 +261,9 @@ public class Interface implements ActionListener {
 		{
 
 			smallDrinkButtons[i] = new JButton("<html>" + smdrinks[i].getName()
-					+ "<br> $" + smdrinks[i].getPrice());
+					+ "<br> $" +  String.format("%,.2f",smdrinks[i].getPrice() ));
+			
+			smallDrinkButtons[i].setBackground(Color.ORANGE);
 
 			smallDrinkButtons[i].setBounds(100, (120 * i) + 100, 20, 20);
 			smallDrinkButtons[i].setSize(100, 100);
@@ -274,7 +279,7 @@ public class Interface implements ActionListener {
 					
 					total = total + price1;
 					area2.append("\n\n      " + name
-							+ "                                $ " + price1);
+							+ "                                $ " + String.format("%,.2f",price1));
 
 					
 					totalArea.setText("\nTotal: $" +  String.format("%,.2f", total));
@@ -309,9 +314,10 @@ public class Interface implements ActionListener {
 		for (int i = 0; i < largeDrinkButtons.length; i++) // From i is 0 to 15
 		{
 			largeDrinkButtons[i] = new JButton("<html>" + lgdrinks[i].getName()
-					+ "<br> $" + lgdrinks[i].getPrice());
+					+ "<br> $" + String.format("%,.2f",lgdrinks[i].getPrice()));
 			largeDrinkButtons[i].setBounds(250, (120 * i) + 100, 20, 20);
 			largeDrinkButtons[i].setSize(100, 100);
+			largeDrinkButtons[i].setBackground(Color.YELLOW);
 			int lgDrinkInt = i;
 			largeDrinkButtons[i].addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -324,7 +330,7 @@ public class Interface implements ActionListener {
 					name = lgdrinks[test].getName();
 					total = total + price2;
 					area2.append("\n\n      " + name
-							+ "                                $ " + price2);
+							+ "                                $ " +String.format("%,.2f", price2));
 
 					
 					totalArea.setText("\nTotal: $" +  String.format("%,.2f", total));
@@ -355,9 +361,10 @@ public class Interface implements ActionListener {
 		for (int i = 0; i < hotdogButtons.length; i++) // From i is 0 to 15
 		{
 			hotdogButtons[i] = new JButton("<html>" + hotdogs[i].getName()
-					+ "<br> $" + hotdogs[i].getPrice());
+					+ "<br> $" + String.format("%,.2f", hotdogs[i].getPrice()));
 			hotdogButtons[i].setBounds(400, (120 * i) + 100, 20, 20);
 			hotdogButtons[i].setSize(100, 100);
+			hotdogButtons[i].setBackground(new Color (117,225,11));
 			int hotdogInt = i;
 			hotdogButtons[i].addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -370,7 +377,7 @@ public class Interface implements ActionListener {
 					name = hotdogs[test].getName();
 					total = total + price3;
 					area2.append("\n\n      " + name
-							+ "                                $ " + price3);
+							+ "                                $ " + String.format("%,.2f",price3));
 
 					
 					totalArea.setText("\nTotal: $" +  String.format("%,.2f", total));
@@ -402,11 +409,12 @@ public class Interface implements ActionListener {
 		for (int i = 0; i < popcornButtons.length; i++) // From i is 0 to 15
 		{
 			popcornButtons[i] = new JButton("<html>" + popcorn[i].getName()
-					+ "<br> $" + popcorn[i].getPrice());
+					+ "<br> $" + String.format("%,.2f", popcorn[i].getPrice()));
 
 			int popcornInt = i;
 			popcornButtons[i].setBounds(550, (120 * i) + 100, 20, 20);
 			popcornButtons[i].setSize(100, 100);
+			popcornButtons[i].setBackground(new Color (27,171,255));
 			popcornButtons[i].addActionListener(new ActionListener()
 
 			{
@@ -421,7 +429,7 @@ public class Interface implements ActionListener {
 					name = popcorn[test].getName();
 					total = total + price4;
 					area2.append("\n\n      " + name
-							+ "                                $ " + price4);
+							+ "                                $ " + String.format("%,.2f",price4));
 
 					
 					totalArea.setText("\nTotal: $" +  String.format("%,.2f", total));
@@ -452,13 +460,16 @@ public class Interface implements ActionListener {
 		// Adding candy to panel
 		for (int i = 0; i < candyButtons.length; i++) // From i is 0 to 15
 		{
+			
 
 			candyButtons[i] = new JButton();
 			candyButtons[i].setText("<html>" + candy[i].getName() + "<br> $"
-					+ candy[i].getPrice());
+					+ String.format("%,.2f", candy[i].getPrice()) );
 
 			candyButtons[i].setBounds(700, (120 * i) + 100, 20, 20);
 			candyButtons[i].setSize(100, 100);
+			candyButtons[i].setBackground(new Color (189,70,225));
+			
 			candyButtons[i].addActionListener(this);
 
 			int candi = i;
@@ -476,7 +487,7 @@ public class Interface implements ActionListener {
 					name = candy[test].getName();
 					total = total + price5;
 					area2.append("\n\n      " + name
-							+ "                                $ " + price5);
+							+ "                                $ " + String.format("%,.2f",price5));
 					
 				
 			
@@ -585,48 +596,53 @@ public class Interface implements ActionListener {
 			// alternates colours and therefore alternates menus
 			if (!(colourChange % 2 == 0)) {
 				staffPrice.setIcon(spButton2);
-				for (int i = 0; i < candy.length; i++) {
+				
+				for (int i = 0; i < candy.length; i++) 
+				{
 					candyButtons[i].setText("<html>" + candy[i].getName()
-							+ "<br> $" + candy[i].getEmployeePrice());
+							+ "<br> $" + String.format("%,.2f", candy[i].getEmployeePrice()));
 					
 				}
 				
-				for (int i = 0; i < smdrinks.length; i++) {
-					smallDrinkButtons[i].setText("<html>" + candy[i].getName()
-							+ "<br> $" + candy[i].getEmployeePrice());
+				
+				for (int j = 0; j < smdrinks.length; j++) 
+				{
+					smallDrinkButtons[j].setText("<html>" + smdrinks[j].getName()
+							+ "<br> $" + String.format("%,.2f", smdrinks[j].getEmployeePrice()));
 					
 				}
 				
-				for (int i = 0; i < lgdrinks.length; i++) {
-					largeDrinkButtons[i].setText("<html>" + candy[i].getName()
-							+ "<br> $" + candy[i].getEmployeePrice());
+				for (int k = 0; k < lgdrinks.length; k++) {
+					largeDrinkButtons[k].setText("<html>" + lgdrinks[k].getName()
+							+ "<br> $" + String.format("%,.2f", lgdrinks[k].getEmployeePrice()));
 					
 				}
 
 				for (int i = 0; i < hotdogs.length; i++) {
 					hotdogButtons[i].setText("<html>" + hotdogs[i].getName()
-							+ "<br> $" + hotdogs[i].getEmployeePrice());
+							+ "<br> $" + String.format("%,.2f", hotdogs[i].getEmployeePrice()));
 				}
 
-			} else {
+			} 
+			else {
 				staffPrice.setIcon(spButton3);
 				for (int i = 0; i < candy.length; i++) {
 					candyButtons[i].setText("<html>" + candy[i].getName()
-							+ "<br> $" + candy[i].getPrice());
+							+ "<br> $" + String.format("%,.2f", candy[i].getPrice()));
 				}
 				for (int i = 0; i < hotdogs.length; i++) {
 					hotdogButtons[i].setText("<html>" + hotdogs[i].getName()
-							+ "<br> $" + hotdogs[i].getPrice());
+							+ "<br> $" + String.format("%,.2f", hotdogs[i].getPrice()));
 				}
 				for (int i = 0; i < smdrinks.length; i++) {
-					smallDrinkButtons[i].setText("<html>" + candy[i].getName()
-							+ "<br> $" + candy[i].getPrice());
+					smallDrinkButtons[i].setText("<html>" + smdrinks[i].getName()
+							+ "<br> $" + String.format("%,.2f", smdrinks[i].getPrice()));
 					
 				}
 				
 				for (int i = 0; i < lgdrinks.length; i++) {
-					largeDrinkButtons[i].setText("<html>" + candy[i].getName()
-							+ "<br> $" + candy[i].getPrice());
+					largeDrinkButtons[i].setText("<html>" + lgdrinks[i].getName()
+							+ "<br> $" + String.format("%,.2f", lgdrinks[i].getPrice()));
 					
 				}
 			}
