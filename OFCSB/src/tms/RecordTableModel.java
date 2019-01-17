@@ -72,7 +72,14 @@ public class RecordTableModel extends AbstractTableModel
 		case REASON_COL:
 			return tempRecord.getReason();
 		case AMOUNT_COL:
-			return tempRecord.getAmount();
+			if(tempRecord.getType().compareTo("Debit Transaction") == 0)
+			{
+				return tempRecord.getDebitAmount();
+			}
+			else
+			{
+				return tempRecord.getAmount();
+			}
 		default:
 			return tempRecord.getDate();
 		}
