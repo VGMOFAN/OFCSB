@@ -39,6 +39,7 @@ public class AddInventoryFrame extends JFrame implements ActionListener
 	private JTextField smallUnitTF, amountTF, yearTF, monthTF, dayTF;
 	private JButton add12Btn, add16Btn, add24Btn, add25Btn, addBtn, cancelBtn;
 	
+	//inherit the InventoryPanel, productDAO, and one of products. The other one will be null
 	public AddInventoryFrame(InventoryPanel thePanel, ProductDAO theDAO, Supply theSupply, Other theOther)
 	{
 		inventoryPanel = thePanel;
@@ -52,23 +53,28 @@ public class AddInventoryFrame extends JFrame implements ActionListener
 		//the font for buttons
 		Font buttonFont = new Font("Arial", Font.PLAIN, 30);
 		
+		//settings for addInventoryFrame
 		addInventoryFrame = new JFrame("Add Inventory");
 		addInventoryFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		addInventoryFrame.setPreferredSize(new Dimension(1500,600));
 		addInventoryFrame.setLayout(new BorderLayout());
 		addInventoryFrame.setResizable(false);
 		
+		//settings for addInventoryPanel
 		addInventoryPanel = new JPanel();
-		addInventoryPanel.setLayout(null);
+		addInventoryPanel.setLayout(null);//set layout to null because I need to set bounds for JComponents
 		
+		//a JLabel to indicate the content after it is the name the product
 		nameLabel = new JLabel("Product Name:");
 		nameLabel.setBounds(20, 20, 200, 50);
 		nameLabel.setFont(buttonFont);
 		addInventoryPanel.add(nameLabel);
 		
+		//a JLabel contains the name of the product which will be added new inventory
 		actualNameLabel = new JLabel();
 		actualNameLabel.setBounds(250, 20, 200, 50);
 		actualNameLabel.setFont(buttonFont);
+		//if one of other or supply is null, that means the other is the one that will be added new inventory
 		if(other == null)
 		{
 			actualNameLabel.setText(supply.getName());
@@ -79,71 +85,87 @@ public class AddInventoryFrame extends JFrame implements ActionListener
 		}
 		addInventoryPanel.add(actualNameLabel);
 		
+		//a JLabel indicates that the contents after it is the scale of large unit and small unit
+		//large unit means something like boxes and small unit means a single unit like a bar of chocolate
+		//1:1 means there is no large unit exist
 		scaleLabel = new JLabel("Large Unit : Small Unit");
 		scaleLabel.setBounds(20, 100, 300, 50);
 		scaleLabel.setFont(buttonFont);
 		addInventoryPanel.add(scaleLabel);
 		
+		//a JLabel that contains a colon
 		colonLabel = new JLabel(":");
 		colonLabel.setBounds(460, 100, 10, 50);
 		colonLabel.setFont(buttonFont);
 		addInventoryPanel.add(colonLabel);
 		
+		//a JLabel that indicates the contents after it is the amount of large unit
 		amountLabel = new JLabel("Amount");
 		amountLabel.setBounds(20, 200, 200, 50);
 		amountLabel.setFont(buttonFont);
 		addInventoryPanel.add(amountLabel);
 		
+		//a JLabel that indicates the contents after it is the expiration date of this inventory
 		exDateLabel = new JLabel("Expiration Date");
 		exDateLabel.setBounds(20, 300, 250, 50);
 		exDateLabel.setFont(buttonFont);
 		addInventoryPanel.add(exDateLabel);
 		
+		//a JLabel that contains a slash
 		slash1Label = new JLabel("/");
 		slash1Label.setBounds(430, 300, 10, 50);
 		slash1Label.setFont(buttonFont);
 		addInventoryPanel.add(slash1Label);
 		
+		//a JLabel that contains an other slash
 		slash2Label = new JLabel("/");
 		slash2Label.setBounds(510, 300, 10, 50);
 		slash2Label.setFont(buttonFont);
 		addInventoryPanel.add(slash2Label);
 		
+		//a JLabel that contains the number of large unit, the number is always 1
 		largeUnitLabel = new JLabel("1");
 		largeUnitLabel.setBounds(400, 100, 60, 50);
 		largeUnitLabel.setFont(buttonFont);
 		addInventoryPanel.add(largeUnitLabel);
 		
+		//a JTextField that contains the number of small units, the default number is 1
 		smallUnitTF = new JTextField("1");
 		smallUnitTF.setBounds(480, 100, 60, 50);
 		smallUnitTF.setFont(buttonFont);
 		addInventoryPanel.add(smallUnitTF);
 		
+		//a JTextField that contains the number of amount of inventory, the default number is 0
 		amountTF = new JTextField("0");
 		amountTF.setBounds(200, 200, 60, 50);
 		amountTF.setFont(buttonFont);
 		addInventoryPanel.add(amountTF);
 		
+		//a JTextField that contains the year number of expiration date
 		yearTF = new JTextField();
 		yearTF.setBounds(300, 300, 120, 50);
 		yearTF.setFont(buttonFont);
 		yearTF.setHorizontalAlignment(SwingConstants.RIGHT);
 		addInventoryPanel.add(yearTF);
 		
+		//a JTextField that contains the month number of expiration date
 		monthTF = new JTextField();
 		monthTF.setBounds(440, 300, 60, 50);
 		monthTF.setFont(buttonFont);
 		monthTF.setHorizontalAlignment(SwingConstants.RIGHT);
 		addInventoryPanel.add(monthTF);
 		
+		//a JTextField that contains the day number of expiration date
 		dayTF = new JTextField();
 		dayTF.setBounds(520, 300, 60, 50);
 		dayTF.setFont(buttonFont);
 		dayTF.setHorizontalAlignment(SwingConstants.RIGHT);
 		addInventoryPanel.add(dayTF);
 		
+		//if the type of the product is other, then it does not have a expiration date
 		if(supply == null)
 		{
+			//disable the JTextField so users cannot enter numbers
 			setDisabled(yearTF);
 			setDisabled(monthTF);
 			setDisabled(dayTF);
@@ -290,12 +312,14 @@ public class AddInventoryFrame extends JFrame implements ActionListener
 			}
 		}
 		
+		//close this frame after clicking cancel button
 		if(e.getSource() == cancelBtn)
 		{
 			addInventoryFrame.dispose();
 		}
 	}
 	
+	//this method can disable selected JComponents and grey them out
 	private void setDisabled(JComponent jc)
 	{
 		jc.setEnabled(false);
