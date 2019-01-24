@@ -84,7 +84,7 @@ public class AddProductFrame extends JFrame implements ActionListener
 		
 		addProductFrame = new JFrame("Add Product");
 		addProductFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		addProductFrame.setPreferredSize(new Dimension(1000, 900));
+		addProductFrame.setPreferredSize(new Dimension(1000, 1000));
 		addProductFrame.setLayout(new BorderLayout());
 		addProductFrame.setResizable(false);
 		
@@ -233,7 +233,7 @@ public class AddProductFrame extends JFrame implements ActionListener
 		addProductPanel.add(addCBBtn);
 		
 		addBtn = new JButton(buttonImage);
-		addBtn.setBounds(100, 750, 280, 82);
+		addBtn.setBounds(100, 850, 280, 82);
 		addBtn.setText("Add");
 		addBtn.setFont(buttonFont);
 		addBtn.setHorizontalTextPosition(JButton.CENTER);
@@ -244,7 +244,7 @@ public class AddProductFrame extends JFrame implements ActionListener
 		addProductPanel.add(addBtn);
 		
 		cancelBtn = new JButton(buttonImage);
-		cancelBtn.setBounds(400, 750, 280, 82);
+		cancelBtn.setBounds(400, 850, 280, 82);
 		cancelBtn.setText("Cancel");
 		cancelBtn.setFont(buttonFont);
 		cancelBtn.setHorizontalTextPosition(JButton.CENTER);
@@ -261,11 +261,13 @@ public class AddProductFrame extends JFrame implements ActionListener
 			setDisabled(typeCB);
 			
 			amountLabel = new JLabel("Amount:");
-			amountLabel.setBounds(20, 370, 100, 33);
+			amountLabel.setBounds(20, 750, 300, 50);
+			amountLabel.setFont(buttonFont);
 			addProductFrame.add(amountLabel);
 			
 			amountTF = new JTextField();
-			amountTF.setBounds(150, 370, 150, 33);
+			amountTF.setBounds(350, 750, 300, 50);
+			amountTF.setFont(buttonFont);
 			addProductFrame.add(amountTF);
 			
 			addBtn.setText("Apply changes");
