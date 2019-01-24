@@ -88,14 +88,7 @@ public class MainPanel implements ActionListener
 			//remove all the content on the main frame and load the inventory system
 			MainFrame.overallFrame.getContentPane().removeAll();
 			MainFrame.overallFrame.repaint();
-//			try
-//			{
-				new InventoryPanel();
-//			}
-//			catch (Exception e1)
-//			{
-//				JOptionPane.showMessageDialog(MainFrame.overallFrame, "You must select a product", "Error", JOptionPane.ERROR_MESSAGE);
-//			}
+			new InventoryPanel();
 		}
 		
 		if(e.getSource() == cashBtn)
@@ -107,7 +100,6 @@ public class MainPanel implements ActionListener
 				MainFrame.overallFrame.repaint();
 				new Interface();
 			}
-			//remove all the content on the main frame and load the cash system
 		}
 	}
 }
